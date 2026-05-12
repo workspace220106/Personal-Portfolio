@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Scene from '@/components/canvas/Scene';
 import VoidReveal from '@/components/ui/VoidReveal';
 import Link from 'next/link';
+import RotatingText from '@/components/ui/RotatingText';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -42,9 +43,7 @@ export default function Home() {
                 className="flex items-center gap-4 mb-stack-md"
               >
                 <div className="h-px w-12 bg-primary/50" />
-                <span className="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">
-                  Software / IT Engineer | Web Developer | Data Enthusiast
-                </span>
+                <RotatingText />
               </motion.div>
 
               <motion.h1
@@ -66,9 +65,6 @@ export default function Home() {
                     GET IN TOUCH
                   </Link>
                 </div>
-                <p className="max-w-sm text-on-surface-variant font-body-lg text-body-lg">
-                  B.E. Information Technology student at Fr. C. Rodrigues Institute of Technology, passionate about building intelligent digital ecosystems.
-                </p>
               </motion.div>
             </motion.div>
 
