@@ -132,7 +132,7 @@ export default function Contact() {
           <div className="relative w-full h-[400px] overflow-hidden glass-card group">
             <img
               alt="Global connectivity grid"
-              className="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:opacity-80 transition-opacity duration-700 scale-105 group-hover:scale-100 transition-transform duration-1000"
+              className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700 scale-105 group-hover:scale-100 transition-transform duration-1000"
               src="/location-bg.png"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
