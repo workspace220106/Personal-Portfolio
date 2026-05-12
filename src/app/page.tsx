@@ -97,11 +97,7 @@ export default function Home() {
               ))}
             </motion.div>
 
-            {/* Scroll Hint */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface-variant/40">
-              <span className="font-label-caps text-[10px] tracking-widest">SCROLL</span>
-              <div className="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent" />
-            </div>
+
           </div>
         </section>
 
