@@ -16,20 +16,21 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   return (
-    <div className={`flex items-center gap-x-8 ${
+  return (
+    <div className={`flex items-center ${
       large 
         ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile leading-tight" 
         : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
     }`}>
       <span className={large ? "text-on-surface font-bold whitespace-nowrap" : ""}>DEVELOPER</span>
       
-      {/* Horizontal Bold Purple Line between segments */}
+      {/* Horizontal Bold Line in the empty space beside DEVELOPER */}
       {large && (
         <motion.div 
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, ease: "circOut" }}
-          className="w-24 md:w-32 h-[6px] bg-primary rounded-full origin-left shadow-[0_0_15px_rgba(192,193,255,0.4)]" 
+          initial={{ width: 0 }}
+          animate={{ width: "200px" }}
+          transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
+          className="h-[6px] bg-gradient-to-r from-primary via-primary/40 to-transparent mx-8 rounded-full shadow-[0_0_15px_rgba(192,193,255,0.4)]" 
         />
       )}
 
