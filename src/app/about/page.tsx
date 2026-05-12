@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Scene from '@/components/canvas/Scene';
-import VoidReveal from '@/components/ui/VoidReveal';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -13,7 +12,7 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <VoidReveal showIndicator={false}>
+    <>
       <Scene />
       <main className="mt-32 px-8 md:px-margin-desktop pb-section-gap max-w-[1440px] mx-auto relative z-10">
         <section className="max-w-7xl mx-auto pt-stack-lg">
@@ -118,6 +117,6 @@ export default function About() {
           </div>
         </section>
       </main>
-    </VoidReveal>
+    </>
   );
 }

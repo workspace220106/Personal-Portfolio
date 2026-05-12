@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Scene from '@/components/canvas/Scene';
-import VoidReveal from '@/components/ui/VoidReveal';
 import LiveLocation from '@/components/ui/LiveLocation';
 
 const fadeUp = {
@@ -14,7 +13,7 @@ const fadeUp = {
 
 export default function Contact() {
   return (
-    <VoidReveal showIndicator={false}>
+    <>
       <Scene />
       <main className="mt-32 px-8 md:px-margin-desktop pb-section-gap max-w-[1440px] mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
@@ -147,6 +146,6 @@ export default function Contact() {
           </div>
         </motion.section>
       </main>
-    </VoidReveal>
+    </>
   );
 }
