@@ -44,13 +44,13 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
             <motion.div
               animate={{ 
                 rotate: 360,
-                x: [0, 10, 0, -10, 0],
-                y: [0, -10, 0, 10, 0]
+                x: [0, 15, 0, -15, 0],
+                y: [0, -15, 0, 15, 0]
               }}
               transition={{ 
-                rotate: { duration: 4, repeat: Infinity, ease: "linear" },
-                x: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                rotate: { duration: 1.5, repeat: Infinity, ease: "linear" },
+                x: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
               }}
               className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center relative"
             >
