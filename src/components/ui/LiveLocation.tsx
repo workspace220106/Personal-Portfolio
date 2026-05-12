@@ -22,8 +22,15 @@ export default function LiveLocation() {
   }, []);
 
   return (
-    <span className="font-body-md text-body-md uppercase tracking-widest transition-all duration-500">
-      {location}
-    </span>
+    <div className="flex items-center gap-3">
+      <div className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+      </div>
+      <span className="font-label-caps text-[10px] text-primary/80 tracking-tighter">LIVE</span>
+      <span className="font-body-md text-body-md uppercase tracking-widest transition-all duration-500">
+        {location}
+      </span>
+    </div>
   );
 }

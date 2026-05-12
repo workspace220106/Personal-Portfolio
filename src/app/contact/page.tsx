@@ -132,14 +132,13 @@ export default function Contact() {
           <div className="relative w-full h-[400px] overflow-hidden glass-card group">
             <img
               alt="Global connectivity grid"
-              className="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:opacity-60 transition-opacity duration-700 scale-105 group-hover:scale-100 transition-transform duration-1000"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyq7eYURA0_nK7qx1co4PGqO_ la la la"
+              className="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:opacity-80 transition-opacity duration-700 scale-105 group-hover:scale-100 transition-transform duration-1000"
+              src="/location-bg.png"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8">
               <h5 className="font-label-caps text-label-caps text-on-surface mb-2">CURRENT LOCATION</h5>
-              <div className="flex items-center gap-2 text-primary">
-                <span className="material-symbols-outlined">location_on</span>
+              <div className="flex items-center gap-2">
                 <LiveLocation />
               </div>
             </div>
