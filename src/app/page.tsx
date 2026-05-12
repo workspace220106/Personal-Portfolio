@@ -43,14 +43,16 @@ export default function Home() {
                 className="flex items-center gap-4 mb-stack-md"
               >
                 <div className="h-px w-12 bg-primary/50" />
-                <RotatingText />
+                <span className="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">
+                  Visionary Developer
+                </span>
               </motion.div>
 
               <motion.h1
                 variants={fadeUp}
                 className="font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile max-w-5xl mb-stack-lg"
               >
-                Architecting the bridge between <span className="text-primary/80 italic font-light">AI/ML innovation</span> and scalable production software.
+                <RotatingText large />
               </motion.h1>
 
               <motion.div
