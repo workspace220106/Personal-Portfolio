@@ -13,7 +13,7 @@ const fadeUp = {
 
 export default function Contact() {
   return (
-    <VoidReveal>
+    <VoidReveal showIndicator={false}>
       <Scene />
       <main className="mt-32 px-8 md:px-margin-desktop pb-section-gap max-w-[1440px] mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">

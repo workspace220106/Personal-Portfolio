@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function VoidReveal({ children }: { children: React.ReactNode }) {
+export default function VoidReveal({ children, showIndicator = true }: { children: React.ReactNode, showIndicator?: boolean }) {
   const [isRevealed, setIsRevealed] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -33,9 +33,8 @@ export default function VoidReveal({ children }: { children: React.ReactNode }) 
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      {/* Scroll Indicator in the Void */}
       <AnimatePresence>
-        {!isRevealed && (
+        {!isRevealed && showIndicator && (
           <motion.div
             className="fixed inset-0 z-[101] flex flex-col items-center justify-center pointer-events-none"
             exit={{ opacity: 0, y: -20 }}
