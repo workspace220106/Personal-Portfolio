@@ -37,13 +37,27 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
         {!isRevealed && showIndicator && (
           <motion.div
             className="fixed inset-0 z-[101] flex flex-col items-center justify-center pointer-events-none"
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            <span className="font-label-caps text-label-caps text-primary uppercase tracking-[0.3em] mb-4">
-              Enter the Vision
-            </span>
-            <div className="w-px h-16 bg-gradient-to-b from-primary/50 to-transparent animate-bounce" />
+            {/* Circular Motion Logo */}
+            <motion.div
+              animate={{ 
+                rotate: 360,
+                x: [0, 10, 0, -10, 0],
+                y: [0, -10, 0, 10, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                x: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center relative"
+            >
+              <div className="w-8 h-8 bg-black rotate-45" />
+              {/* Outer orbit circle for extra "visionary" feel */}
+              <div className="absolute inset-[-20px] border border-primary/20 rounded-full animate-pulse" />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
