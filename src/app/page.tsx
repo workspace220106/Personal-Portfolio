@@ -38,15 +38,6 @@ export default function Home() {
               variants={staggerContainer}
               className="flex flex-col"
             >
-              <motion.div
-                variants={fadeUp}
-                className="flex items-center gap-4 mb-stack-md"
-              >
-                <div className="h-px w-12 bg-primary/50" />
-                <span className="font-label-caps text-label-caps text-primary uppercase tracking-[0.2em]">
-                  Visionary Developer
-                </span>
-              </motion.div>
 
               <motion.h1
                 variants={fadeUp}
