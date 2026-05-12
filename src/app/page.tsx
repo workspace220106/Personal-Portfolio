@@ -29,7 +29,7 @@ export default function Home() {
       <Scene />
       <main className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-[1024px] flex flex-col justify-center px-8 md:px-margin-desktop relative overflow-hidden pt-10">
+        <section className="min-h-[800px] flex flex-col justify-start px-8 md:px-margin-desktop relative overflow-hidden pt-32">
           <div className="absolute inset-0 glow-bg pointer-events-none" />
           <div className="max-w-7xl z-10">
             <motion.div
