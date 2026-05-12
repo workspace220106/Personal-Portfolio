@@ -16,26 +16,20 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   return (
-  return (
-    <div className={`flex items-center ${
+    <div className={`flex flex-wrap items-center ${
       large 
         ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile leading-tight" 
         : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
     }`}>
-      <span className={large ? "text-on-surface font-bold whitespace-nowrap" : ""}>DEVELOPER</span>
+      <span className={large ? "text-on-surface font-bold" : ""}>DEVELOPER</span>
       
-      {/* Horizontal Bold Line in the empty space beside DEVELOPER */}
+      {/* Straight Purple Line Separator */}
       {large && (
-        <motion.div 
-          initial={{ width: 0 }}
-          animate={{ width: "200px" }}
-          transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
-          className="h-[6px] bg-gradient-to-r from-primary via-primary/40 to-transparent mx-8 rounded-full shadow-[0_0_15px_rgba(192,193,255,0.4)]" 
-        />
+        <div className="hidden md:block w-[2px] h-[0.8em] bg-primary/40 mx-8 self-center" />
       )}
 
       <div className={`relative overflow-hidden ${
-        large ? "h-[1.1em] min-w-[320px] sm:min-w-[450px] md:min-w-[550px]" : "h-[1.2em] min-w-[180px]"
+        large ? "h-[1.1em] min-w-[350px] sm:min-w-[550px] md:min-w-[750px]" : "h-[1.2em] min-w-[200px]"
       }`}>
         <AnimatePresence mode="wait">
           <motion.span
