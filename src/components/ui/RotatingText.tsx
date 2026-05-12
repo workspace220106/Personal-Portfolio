@@ -16,15 +16,15 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   return (
-    <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 ${
-      large 
-        ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile" 
-        : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
-    }`}>
-      <span className={large ? "text-on-surface" : ""}>DEVELOPER +</span>
-      <div className={`relative overflow-hidden ${
-        large ? "h-[1.1em] min-w-[300px] md:min-w-[500px]" : "h-[1.2em] min-w-[150px]"
+    <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 ${large
+      ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile"
+      : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
       }`}>
+      <span className={large ? "text-on-surface" : ""}>DEVELOPER
+        +
+      </span>
+      <div className={`relative overflow-hidden ${large ? "h-[1.1em] min-w-[300px] md:min-w-[500px]" : "h-[1.2em] min-w-[150px]"
+        }`}>
         <AnimatePresence mode="wait">
           <motion.span
             key={words[index]}
