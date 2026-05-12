@@ -6,7 +6,7 @@ import { Points, PointMaterial, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 function Particles() {
-  const ref = useRef<any>();
+  const ref = useRef<THREE.Group>(null);
   const [sphere] = React.useState(() => {
     const points = new Float32Array(5000 * 3);
     for (let i = 0; i < 5000; i++) {
