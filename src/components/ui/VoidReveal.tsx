@@ -30,7 +30,7 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
           opacity: isRevealed ? 0 : 1,
           scale: isRevealed ? 1.1 : 1
         }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
       />
 
       <AnimatePresence>
@@ -56,13 +56,17 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
           opacity: isRevealed ? 1 : 0,
           y: isRevealed ? 0 : 20
         }}
-        transition={{ duration: 1, delay: 0.2 }}
+        transition={{ duration: 1.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         {children}
       </motion.div>
 
-      {/* Spacer to allow initial scrolling into the void */}
-      {!isRevealed && <div className="h-screen w-full" />}
+      {/* Animated Spacer */}
+      <motion.div 
+        animate={{ height: isRevealed ? 0 : "100vh" }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full overflow-hidden"
+      />
     </div>
   );
 }

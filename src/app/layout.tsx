@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: 'Software / IT Engineer | Web Developer | Data Enthusiast — Building the bridge between AI/ML innovation and scalable production software.',
 };
 
+import SmoothScroll from '@/components/ui/SmoothScroll';
+
 export default function RootLayout({
   children,
 }: {
@@ -28,9 +30,11 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-on-background antialiased">
-        <Navbar />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
