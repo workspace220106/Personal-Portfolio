@@ -16,35 +16,42 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   return (
-    <div className={`flex flex-wrap items-center ${
-      large 
-        ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile leading-tight" 
-        : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
-    }`}>
-      <span className={large ? "text-on-surface font-bold" : ""}>DEVELOPER</span>
-      
-      {/* Straight Purple Line Separator */}
-      {large && (
-        <div className="hidden md:block w-[2px] h-[0.8em] bg-primary/40 mx-8 self-center" />
-      )}
-
-      <div className={`relative overflow-hidden ${
-        large ? "h-[1.1em] min-w-[350px] sm:min-w-[550px] md:min-w-[750px]" : "h-[1.2em] min-w-[200px]"
+    <div className="flex flex-col items-start gap-4">
+      <div className={`flex flex-wrap items-center ${
+        large 
+          ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile leading-tight" 
+          : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
       }`}>
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={words[index]}
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "-100%", opacity: 0 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className={`absolute left-0 whitespace-nowrap ${large ? "text-primary/80 font-bold" : ""}`}
-          >
-            <span className="text-primary font-black mr-2">+</span>
-            {words[index]}
-          </motion.span>
-        </AnimatePresence>
+        <span className={large ? "text-on-surface font-bold" : ""}>DEVELOPER</span>
+        
+        <div className={`relative overflow-hidden ml-8 ${
+          large ? "h-[1.1em] min-w-[350px] sm:min-w-[550px] md:min-w-[750px]" : "h-[1.2em] min-w-[200px]"
+        }`}>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={words[index]}
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-100%", opacity: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className={`absolute left-0 whitespace-nowrap ${large ? "text-primary/80 font-bold" : ""}`}
+            >
+              <span className="text-primary font-black mr-2">+</span>
+              {words[index]}
+            </motion.span>
+          </AnimatePresence>
+        </div>
       </div>
+
+      {/* Horizontal Bold Purple Line */}
+      {large && (
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="h-[4px] bg-primary/60 rounded-full max-w-[800px]" 
+        />
+      )}
     </div>
   );
 }
