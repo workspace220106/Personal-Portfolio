@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Scene from '@/components/canvas/Scene';
 import VoidReveal from '@/components/ui/VoidReveal';
+import LiveLocation from '@/components/ui/LiveLocation';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -140,7 +141,7 @@ export default function Contact() {
               <h5 className="font-label-caps text-label-caps text-on-surface mb-2">CURRENT LOCATION</h5>
               <div className="flex items-center gap-2 text-primary">
                 <span className="material-symbols-outlined">location_on</span>
-                <span className="font-body-md text-body-md uppercase tracking-widest">MUMBAI / INDIA</span>
+                <LiveLocation />
               </div>
             </div>
           </div>
