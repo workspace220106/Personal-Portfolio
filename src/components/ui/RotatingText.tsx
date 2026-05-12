@@ -16,25 +16,15 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   return (
-    <div className={`flex flex-wrap items-center ${
+    <div className={`flex items-center w-full ${
       large 
         ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile leading-tight" 
         : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
     }`}>
-      <span className={large ? "text-on-surface font-bold" : ""}>DEVELOPER</span>
+      <span className={large ? "text-on-surface font-bold whitespace-nowrap" : ""}>DEVELOPER</span>
       
-      {/* Glowy Vertical Gradient Separator */}
-      {large && (
-        <motion.div 
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "0.8em", opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="hidden md:block w-[4px] bg-gradient-to-b from-transparent via-primary to-transparent mx-8 self-center shadow-[0_0_15px_rgba(192,193,255,0.4)]" 
-        />
-      )}
-
-      <div className={`relative overflow-hidden ${
-        large ? "h-[1.1em] min-w-[350px] sm:min-w-[550px] md:min-w-[750px]" : "h-[1.2em] min-w-[200px]"
+      <div className={`relative overflow-hidden mx-8 ${
+        large ? "h-[1.1em] min-w-[320px] sm:min-w-[450px] md:min-w-[550px]" : "h-[1.2em] min-w-[180px]"
       }`}>
         <AnimatePresence mode="wait">
           <motion.span
@@ -50,6 +40,16 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
           </motion.span>
         </AnimatePresence>
       </div>
+
+      {/* Horizontal "Tail" Line filling the space */}
+      {large && (
+        <motion.div 
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
+          className="flex-grow h-[4px] bg-gradient-to-r from-primary/60 to-transparent rounded-full origin-left shadow-[0_0_10px_rgba(192,193,255,0.2)]" 
+        />
+      )}
     </div>
   );
 }
