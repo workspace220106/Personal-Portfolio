@@ -16,14 +16,24 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   return (
-    <div className={`flex items-center w-full ${
+    <div className={`flex items-center gap-x-8 ${
       large 
         ? "font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile leading-tight" 
         : "font-label-caps text-label-caps text-primary tracking-[0.2em]"
     }`}>
       <span className={large ? "text-on-surface font-bold whitespace-nowrap" : ""}>DEVELOPER</span>
       
-      <div className={`relative overflow-hidden mx-8 ${
+      {/* Horizontal Bold Purple Line between segments */}
+      {large && (
+        <motion.div 
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1, ease: "circOut" }}
+          className="w-24 md:w-32 h-[6px] bg-primary rounded-full origin-left shadow-[0_0_15px_rgba(192,193,255,0.4)]" 
+        />
+      )}
+
+      <div className={`relative overflow-hidden ${
         large ? "h-[1.1em] min-w-[320px] sm:min-w-[450px] md:min-w-[550px]" : "h-[1.2em] min-w-[180px]"
       }`}>
         <AnimatePresence mode="wait">
@@ -40,16 +50,6 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
           </motion.span>
         </AnimatePresence>
       </div>
-
-      {/* Horizontal "Tail" Line filling the space */}
-      {large && (
-        <motion.div 
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
-          className="flex-grow h-[4px] bg-gradient-to-r from-primary/60 to-transparent rounded-full origin-left shadow-[0_0_10px_rgba(192,193,255,0.2)]" 
-        />
-      )}
     </div>
   );
 }
