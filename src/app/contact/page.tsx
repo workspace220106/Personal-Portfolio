@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Scene from '@/components/canvas/Scene';
 import LiveLocation from '@/components/ui/LiveLocation';
 
@@ -12,6 +12,41 @@ const fadeUp = {
 };
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      if (response.ok && result.success) {
+        setSubmitStatus('success');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
+  };
+
   return (
     <>
       <Scene />
@@ -75,13 +110,15 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-8 glass-card p-8 md:p-12"
           >
-            <form className="flex flex-col gap-10">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-3 group">
                   <label className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
                     IDENTIFICATION / NAME
                   </label>
                   <input
+                    name="name"
+                    required
                     className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus:ring-0 focus:border-primary transition-all placeholder:text-white/10 text-on-surface outline-none"
                     placeholder="Commander Name"
                     type="text"
@@ -92,6 +129,8 @@ export default function Contact() {
                     COMMUNICATION / EMAIL
                   </label>
                   <input
+                    name="email"
+                    required
                     className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus:ring-0 focus:border-primary transition-all placeholder:text-white/10 text-on-surface outline-none"
                     placeholder="access@network.com"
                     type="email"
@@ -103,6 +142,8 @@ export default function Contact() {
                   PROJECT VISION
                 </label>
                 <textarea
+                  name="message"
+                  required
                   className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus:ring-0 focus:border-primary transition-all placeholder:text-white/10 text-on-surface resize-none outline-none"
                   placeholder="Describe the breakthrough..."
                   rows={4}
@@ -110,12 +151,32 @@ export default function Contact() {
               </div>
               <div className="flex flex-col md:flex-row items-center gap-8 mt-4">
                 <button
-                  className="w-full md:w-auto font-label-caps text-label-caps px-12 py-6 bg-primary-container/20 text-primary border border-primary/40 hover:bg-primary-container/30 hover:border-primary transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group"
+                  disabled={isSubmitting}
+                  className={`w-full md:w-auto font-label-caps text-label-caps px-12 py-6 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group ${
+                    submitStatus === 'success' 
+                      ? 'bg-green-500/20 text-green-400 border-green-500/40' 
+                      : 'bg-primary-container/20 text-primary border border-primary/40 hover:bg-primary-container/30 hover:border-primary'
+                  }`}
                   type="submit"
                 >
-                  INITIATE TRANSMISSION
-                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">send</span>
+                  {isSubmitting ? 'TRANSMITTING...' : submitStatus === 'success' ? 'TRANSMISSION COMPLETE' : 'INITIATE TRANSMISSION'}
+                  <span className={`material-symbols-outlined text-[18px] transition-all ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`}>
+                    {submitStatus === 'success' ? 'check_circle' : 'send'}
+                  </span>
                 </button>
+                
+                <AnimatePresence>
+                  {submitStatus === 'error' && (
+                    <motion.span
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-red-400 font-label-caps text-[10px]"
+                    >
+                      TRANSMISSION FAILED. PLEASE TRY AGAIN.
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </div>
             </form>
           </motion.div>
