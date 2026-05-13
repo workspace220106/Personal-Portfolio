@@ -32,9 +32,9 @@ export default function About() {
                 className="aspect-[4/5] w-full overflow-hidden rounded-xl border border-white/10 relative glass-card"
               >
                 <img
-                  alt="Portrait of a digital architect"
-                  className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-700 scale-110"
-                  src="https://lh3.googleusercontent.com/aida/ADBb0uhnwiR9G1c5Y28BHPWAkVtGVJSC0P2XiuMgS-UkmAUhWTw4yDZ5hXU9w57Frl10DzYBMeHdlJJABoL6Ec08XPm-K7ZfmSU33S7iX39pap1MarwbIWU0_qdBwJMaez4gI5aHNcbe1WJ352aHelzGHwlqYmjOEOElu2sHcKe73gZJttZevvcDirotuQC1jppcQK3FTCee7NE3g7POvhKUKZH0FNPQURsyVlityafebaoBX4s6ogou-4ccgb0sEWJ3biGyLDIisCe_9g"
+                  alt="Portrait of Rajiv Agarwal"
+                  className="w-full h-full object-cover grayscale brightness-75 transition-all duration-700 scale-110"
+                  src="/profile.jpg"
                   style={{ objectPosition: 'center 20%' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
