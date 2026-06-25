@@ -5,19 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function VoidReveal({ children, showIndicator = true }: { children: React.ReactNode, showIndicator?: boolean }) {
   const [isRevealed, setIsRevealed] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      if (currentScrollY > 50) {
-        setIsRevealed(true);
-      }
-    };
+    const timer = setTimeout(() => {
+      setIsRevealed(true);
+    }, 5000);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -40,17 +34,17 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            {/* Circular Motion Logo */}
+            {/* Bouncing Motion Logo */}
             <motion.div
               animate={{ 
-                rotate: 360,
-                x: [0, 15, 0, -15, 0],
-                y: [0, -15, 0, 15, 0]
+                y: [0, -40, 0],
               }}
               transition={{ 
-                rotate: { duration: 1.5, repeat: Infinity, ease: "linear" },
-                x: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                y: { 
+                  duration: 0.8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }
               }}
               className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center relative"
             >
