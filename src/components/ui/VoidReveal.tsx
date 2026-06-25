@@ -34,17 +34,17 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            {/* Bouncing Motion Logo */}
+            {/* Circular Motion Logo */}
             <motion.div
               animate={{ 
-                y: [0, -40, 0],
+                rotate: 360,
+                x: [0, 15, 0, -15, 0],
+                y: [0, -15, 0, 15, 0]
               }}
               transition={{ 
-                y: { 
-                  duration: 0.8, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }
+                rotate: { duration: 1.5, repeat: Infinity, ease: "linear" },
+                x: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
               }}
               className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center relative"
             >
