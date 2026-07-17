@@ -72,10 +72,10 @@ export default function Home() {
               className="z-10 mt-24 grid grid-cols-2 gap-8 border-t border-white/10 pt-12 md:grid-cols-4"
             >
               {[
-                { label: 'JEE MAIN', value: '92.2%ile' },
-                { label: 'CGPA', value: '8.71' },
-                { label: 'INTERNSHIPS', value: '4' },
-                { label: 'MHTCET', value: '93.67%ile' },
+                { label: 'TOTAL INTERNSHIPS', value: '4 COMPLETED' },
+                { label: 'AI INTERN', value: '@ INTERACTO AI' },
+                { label: 'WEB DEV INTERN', value: '@ ONJI' },
+                { label: 'SCRUM MASTER', value: '@ ONJI' },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -84,7 +84,7 @@ export default function Home() {
                   transition={{ delay: 0.6 + (i * 0.1) }}
                 >
                   <p className="font-label-caps text-[10px] text-primary mb-2">{stat.label}</p>
-                  <p className="font-headline-md text-2xl">{stat.value}</p>
+                  <p className="font-headline-md text-2xl uppercase">{stat.value}</p>
                 </motion.div>
               ))}
             </motion.div>
