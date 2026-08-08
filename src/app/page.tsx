@@ -90,7 +90,7 @@ export default function Home() {
         </section>
 
         {/* Education & Highlights */}
-        <section className="px-8 md:px-margin-desktop py-section-gap bg-surface-container-lowest" id="about">
+        <section className="px-8 md:px-margin-desktop py-section-gap" id="about">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-section-gap">
               <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
@@ -124,7 +124,7 @@ export default function Home() {
         </section>
 
         {/* Work Experience */}
-        <section className="px-8 md:px-margin-desktop py-section-gap bg-background overflow-hidden">
+        <section className="px-8 md:px-margin-desktop py-section-gap overflow-hidden">
           <div className="max-w-4xl mx-auto">
             <div className="mb-16 text-center">
               <h2 className="font-label-caps text-label-caps text-primary mb-4 uppercase tracking-[0.3em]">Work Experience</h2>
@@ -142,7 +142,7 @@ export default function Home() {
         </section>
 
         {/* Certifications */}
-        <section className="px-8 md:px-margin-desktop py-section-gap bg-surface-container-lowest">
+        <section className="px-8 md:px-margin-desktop py-section-gap">
           <div className="max-w-7xl mx-auto">
             <div className="mb-12 border-l-4 border-primary pl-6">
               <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Certifications</h2>
@@ -211,7 +211,7 @@ export default function Home() {
         </section>
 
         {/* Core Capabilities */}
-        <section className="px-8 md:px-margin-desktop py-section-gap bg-surface-container-lowest">
+        <section className="px-8 md:px-margin-desktop py-section-gap">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-gutter">
             <div className="md:w-1/3">
               <h2 className="font-headline-md text-headline-md sticky top-32">CORE<br/>CAPABILITIES</h2>
@@ -245,7 +245,7 @@ export default function Home() {
         </section>
 
         {/* Tech Stack */}
-        <section className="px-8 md:px-margin-desktop py-section-gap bg-background">
+        <section className="px-8 md:px-margin-desktop py-section-gap">
           <div className="max-w-7xl mx-auto">
             <div className="mb-12 border-l-4 border-primary pl-6">
               <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Full Tech Stack</h2>
