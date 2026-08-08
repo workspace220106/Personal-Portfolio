@@ -6,7 +6,7 @@ import Scene from '@/components/canvas/Scene';
 import VoidReveal from '@/components/ui/VoidReveal';
 import Link from 'next/link';
 import RotatingText from '@/components/ui/RotatingText';
-import { experiences, projects } from '@/data/portfolioData';
+import { experiences, projects, stats } from '@/data/portfolioData';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -72,12 +72,7 @@ export default function Home() {
               transition={{ delay: 0.5, duration: 1 }}
               className="z-10 mt-24 grid grid-cols-2 gap-8 border-t border-white/10 pt-12 md:grid-cols-4"
             >
-              {[
-                { label: 'TOTAL INTERNSHIPS', value: '4 COMPLETED' },
-                { label: 'AI INTERN', value: '@ INTERACTO AI' },
-                { label: 'WEB DEV INTERN', value: '@ ONJI' },
-                { label: 'SCRUM MASTER', value: '@ ONJI' },
-              ].map((stat, i) => (
+              {stats.map((stat, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 10 }}

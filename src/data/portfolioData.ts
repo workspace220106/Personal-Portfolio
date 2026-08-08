@@ -16,6 +16,18 @@ export interface Project {
   featured?: boolean;
 }
 
+export interface Stat {
+  label: string;
+  value: string;
+}
+
+export const stats: Stat[] = [
+  { label: 'TOTAL INTERNSHIPS', value: '5 COMPLETED' },
+  { label: 'ML INTERN', value: '@ FLYRANK AI' },
+  { label: 'FULL-STACK DEV', value: '@ AWAKENIQ' },
+  { label: 'SCRUM MASTER', value: '@ ONJI' },
+];
+
 export const experiences: Experience[] = [
   {
     title: 'Machine Learning Intern',
