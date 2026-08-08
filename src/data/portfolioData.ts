@@ -17,6 +17,20 @@ export interface Project {
 }
 
 export const experiences: Experience[] = [
+  {
+    title: 'Machine Learning Intern',
+    company: '@ FLYRANK AI',
+    date: 'JUL 2026 — PRESENT',
+    icon: 'psychology',
+    align: 'right'
+  },
+  {
+    title: 'Full-stack Developer',
+    company: '@ AWAKENIQ',
+    date: 'JUN 2026 — JUL 2026',
+    icon: 'developer_mode',
+    align: 'left'
+  },
   { 
     title: 'Scrum Master', 
     company: '@ ONJI', 
@@ -79,6 +93,14 @@ export const projects: Project[] = [
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDubbBplN-Ggsr9R4wfWe4EdsPOgazVzNmszAfWCiq_-EAjJ4NZ2Tvy7Gd9hig9RkWEXFX4XQRnILumNmH54Adr-abr28OasvMXUvBRqiEPPeH_nguSkcBpMmrOj0dJbXTtugnYAm23vy-gC-mNU_v7FiAhG0PrL3moAh7rhF8kCgPg_qQkeU11E2xtZg6g1glqotLxScbJSZVoaolptaifZ4e_t0dlRkDjp4hr2T1VWFJH9jLH2oe0w8rf6mxQX4z4PLlW9MBeqqY',
     link: 'https://aquacare-final.vercel.app/',
     align: 'start'
+  },
+  {
+    name: 'Yojana Sarthi',
+    type: 'AI/ML',
+    desc: 'AI-powered Citizen Scheme Portal to discover, compare, and verify eligibility for Indian government schemes using FastAPI, RAG (Gemini + FAISS), and React.',
+    img: '/yojana-sarthi.png',
+    link: 'https://github.com/workspace220106/Yojana-Sarthi',
+    align: 'end'
   },
 
   /* -------------------------------------------------------------
