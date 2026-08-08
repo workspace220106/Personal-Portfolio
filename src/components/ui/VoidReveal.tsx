@@ -5,13 +5,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function VoidReveal({ children, showIndicator = true }: { children: React.ReactNode, showIndicator?: boolean }) {
   const [isRevealed, setIsRevealed] = useState(false);
+  const [progress, setProgress] = useState(1);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsRevealed(true);
-    }, 5000);
+    const startTime = Date.now();
+    const duration = 8000; // 8 seconds
 
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const currentProgress = Math.min(1 + Math.floor((elapsed / duration) * 99), 100);
+      setProgress(currentProgress);
+
+      if (elapsed >= duration) {
+        clearInterval(interval);
+        setIsRevealed(true);
+      }
+    }, 30);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -34,24 +45,18 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            {/* Circular Motion Logo */}
-            <motion.div
-              animate={{ 
-                rotate: 360,
-                x: [0, 15, 0, -15, 0],
-                y: [0, -15, 0, 15, 0]
-              }}
-              transition={{ 
-                rotate: { duration: 1.5, repeat: Infinity, ease: "linear" },
-                x: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-              }}
-              className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center relative"
-            >
-              <div className="w-8 h-8 bg-black rotate-45" />
-              {/* Outer orbit circle for extra "visionary" feel */}
-              <div className="absolute inset-[-20px] border border-primary/20 rounded-full animate-pulse" />
-            </motion.div>
+            {/* Percentage loader and progress bar */}
+            <div className="flex flex-col items-center justify-center w-64 md:w-80 px-6">
+              <span className="font-headline-xl text-5xl md:text-6xl text-primary font-bold mb-4 tracking-widest tabular-nums drop-shadow-[0_0_15px_rgba(192,193,255,0.4)]">
+                {progress}%
+              </span>
+              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden relative">
+                <div 
+                  className="h-full bg-primary transition-all duration-75 ease-out shadow-[0_0_8px_rgba(192,193,255,0.8)]"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

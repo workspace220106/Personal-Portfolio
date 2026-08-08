@@ -6,6 +6,7 @@ import Scene from '@/components/canvas/Scene';
 import VoidReveal from '@/components/ui/VoidReveal';
 import Link from 'next/link';
 import RotatingText from '@/components/ui/RotatingText';
+import { experiences, projects } from '@/data/portfolioData';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -137,12 +138,7 @@ export default function Home() {
             <div className="relative flex flex-col items-center">
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2 hidden md:block" />
               <div className="w-full space-y-24 relative">
-                {[
-                  { title: 'Scrum Master', company: '@ ONJI', date: 'JAN 2024 — PRESENT', icon: 'groups', align: 'right' },
-                  { title: 'AI Intern', company: '@ INTERACTO AI', date: 'JUL 2023 — DEC 2023', icon: 'psychology', align: 'left' },
-                  { title: 'Web Dev Intern', company: '@ ONJI', date: 'JAN 2023 — JUN 2023', icon: 'code', align: 'right' },
-                  { title: 'Tele Calling', company: '@ AAHAN ENTERPRISES', date: 'JUN 2022 — AUG 2022', icon: 'call', align: 'left' },
-                ].map((exp, i) => (
+                {experiences.map((exp, i) => (
                   <ExperienceItem key={i} exp={exp} index={i} />
                 ))}
               </div>
@@ -181,41 +177,7 @@ export default function Home() {
             <p className="font-label-caps text-label-caps text-on-surface-variant">PROJECT SHOWCASE</p>
           </div>
           <div className="flex flex-col items-center">
-            {[
-              {
-                name: 'PacPay',
-                type: 'Fintech',
-                desc: 'Next-gen payment gateway with real-time analytics and high-performance infrastructure.',
-                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA5EaU1wpVLyx6dfGkz7PWbYKaIGQqafqJF6isCAxcghlmZsPyIOw30jczDMLFsHV4em-pYIzYqnQKEV-3uIUVxECujqvS5dspnsBh6Kh5PVFlu6ZWSZ3bJ7Xy82I0t94mABhOU0I2vspnzhYyavrMQp3DOLRq-uWr917DVheiE77AyUoe17pOjGTJgLwl5Q_AvOwH6_TccyNFnNs9Xp6pyax6SrJ0nzfAgGkWle6OUhVAN_y8Or2lIhGyry42edwz389q_kZZE7xc',
-                link: 'https://pacpay.vercel.app/',
-                align: 'start',
-                featured: true
-              },
-              {
-                name: 'ASL Chatbot',
-                type: 'AI/ML',
-                desc: 'Real-time Sign Language interpretation using TensorFlow.js.',
-                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSwo984iNoDTI7_WOvtJpdRdGKBamXTUCL7ktewMRxDNqMnrPweFgpsN--32scqFXECd5rAphwI_iZZ4ublYibkt_mhMoDGKVgpV8UuYfnP4i5K4GgZj1E2pt1oVlGq1-8vZVKNFJbzMnpraVtmJ81vydlv_GHbfbVDxVBTaAjmqLAjKpYNI8ecOqlAQqDIH9C4djk89psfqGP9xSK7qStG7KS62faRT4QVFZqtJmpdCm-_Dkg5peRMtc13jl1Me2S7vWbxSIoVZA',
-                link: '#',
-                align: 'end'
-              },
-              {
-                name: 'Aakash ERP',
-                type: 'ERP',
-                desc: 'Enterprise-grade inventory and resource management system.',
-                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCCjTwbWGqamPAgaAeMlOumlU6TFBZRx-eH4zyGwW2j8M_HjqRBCcWjdfW2icWyy5FvmqT3pyp29c2JaxAVy1JG-okZQ-8js4U9IKydVHU6MzG-BdwBHpg_UIFXJP--K6PgozqOMtXATt4Bg80YulDpFbQHXTt-slk2l2UeEV89v13RJI0B1b_sXwtMrQY6ZGfSq0gxMuQfUVa6ny7Pg2Eo10hmUDA_Of57ecaZ-4KcFOA8Q5KWVv6TlgcAAjVCt_zKK78wzwY23z4',
-                link: 'https://aakash-enterprises-frontend.vercel.app/',
-                align: 'start'
-              },
-              {
-                name: 'Aquacare',
-                type: 'IOT',
-                desc: 'An intelligent water management system designed for sustainable resource tracking and automated conservation.',
-                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDubbBplN-Ggsr9R4wfWe4EdsPOgazVzNmszAfWCiq_-EAjJ4NZ2Tvy7Gd9hig9RkWEXFX4XQRnILumNmH54Adr-abr28OasvMXUvBRqiEPPeH_nguSkcBpMmrOj0dJbXTtugnYAm23vy-gC-mNU_v7FiAhG0PrL3moAh7rhF8kCgPg_qQkeU11E2xtZg6g1glqotLxScbJSZVoaolptaifZ4e_t0dlRkDjp4hr2T1VWFJH9jLH2oe0w8rf6mxQX4z4PLlW9MBeqqY',
-                link: 'https://aquacare-final.vercel.app/',
-                align: 'end'
-              },
-            ].map((proj, i) => (
+            {projects.map((proj, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: proj.align === 'start' ? -50 : 50 }}
