@@ -26,80 +26,72 @@ export default function Home() {
     <VoidReveal>
       <Scene />
       <main className="relative z-10">
-        {/* Hero Section */}
-        <section className="relative min-h-screen px-6 md:px-margin-desktop pt-28 md:pt-20 pb-16 overflow-hidden">
+        {/* Hero Section — Alex-style: HI I'M <NAME> wrapping over a centered portrait */}
+        <section className="relative min-h-screen px-6 md:px-margin-desktop pt-28 md:pt-24 pb-16 overflow-hidden">
           <div className="absolute inset-0 glow-bg pointer-events-none" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
 
-            {/* Headline + portrait stack. Portrait sits IN FRONT (z-30) and
-                occludes the middle of the headline — Alex-Trost style. */}
-            <div className="relative">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 font-headline-xl font-bold leading-[0.88] tracking-[-0.04em] text-[56px] sm:text-[88px] md:text-[128px] lg:text-[160px] xl:text-[188px] text-center md:text-left"
-              >
-                HI, I&apos;M <span className="text-primary">RAJIV</span>
-              </motion.h1>
+            {/* Big headline — full width, sits BEHIND the portrait */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 font-headline-xl font-bold leading-[0.88] tracking-[-0.04em] text-[64px] sm:text-[96px] md:text-[140px] lg:text-[180px] xl:text-[210px]"
+            >
+              HI, I&apos;M <span className="text-primary">RAJIV</span>
+            </motion.h1>
 
-              {/* Portrait — absolutely centered over the headline area so the
-                  head rises ABOVE the text and the body overlaps the type. */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.0, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="pointer-events-none absolute inset-x-0 top-0 z-30 flex justify-center -translate-y-[18%] sm:-translate-y-[20%] md:-translate-y-[22%] lg:-translate-y-[24%]"
-              >
-                <div className="pointer-events-auto">
-                  <HeroPortrait />
-                </div>
-              </motion.div>
-            </div>
+            {/* Portrait layer — pulled up with negative margin, sits ON TOP of the headline */}
+            <div className="relative mt-[-40px] sm:mt-[-70px] md:mt-[-110px] lg:mt-[-150px]">
+              <div className="relative z-30 flex justify-center">
+                <HeroPortrait />
+              </div>
 
-            {/* Subcopy left + CTA right, below the portrait */}
-            <div className="relative z-20 mt-[320px] sm:mt-[380px] md:mt-[460px] lg:mt-[560px] flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="max-w-md font-label-caps text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-on-surface-variant leading-[1.9]"
-              >
-                FULL-STACK + AI — NOT AI ON TOP OF FULL-STACK. SHIPPING PRODUCTION PRODUCTS FROM REACT, FASTAPI AND TRANSFORMERS BUILT FROM SCRATCH 🚀
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const lenis = (window as unknown as { lenis?: { scrollTo: (t: Element | number, o?: { offset?: number }) => void } }).lenis;
-                    const target = document.getElementById('contact');
-                    if (lenis && target) {
-                      lenis.scrollTo(target, { offset: -80 });
-                    } else if (target) {
-                      target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    history.replaceState(null, '', '#contact');
-                  }}
-                  className="inline-flex items-center gap-2 bg-primary text-black font-label-caps text-label-caps px-6 md:px-8 py-3.5 md:py-4 rounded-full hover:shadow-[0_0_28px_rgba(192,193,255,0.5)] transition-all duration-300 active:scale-95"
+              {/* Subcopy (left) + CTA (right) layered on top of portrait at mid-torso height */}
+              <div className="pointer-events-none absolute inset-x-0 top-[42%] md:top-[38%] z-20 flex items-start justify-between gap-6 md:gap-10 px-0">
+                <motion.p
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="pointer-events-auto max-w-[180px] md:max-w-[240px] font-label-caps text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-on-surface-variant leading-[1.9]"
                 >
-                  CONTACT ME
-                  <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
-                </a>
-              </motion.div>
+                  A SOFTWARE / IT ENGINEER PASSIONATE ABOUT BUILDING INTELLIGENT, SCALABLE DIGITAL PRODUCTS 🚀
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="pointer-events-auto"
+                >
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const lenis = (window as unknown as { lenis?: { scrollTo: (t: Element | number, o?: { offset?: number }) => void } }).lenis;
+                      const target = document.getElementById('contact');
+                      if (lenis && target) {
+                        lenis.scrollTo(target, { offset: -80 });
+                      } else if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                      }
+                      history.replaceState(null, '', '#contact');
+                    }}
+                    className="inline-flex items-center gap-2 bg-primary text-black font-label-caps text-label-caps px-6 md:px-8 py-3.5 md:py-4 rounded-full hover:shadow-[0_0_28px_rgba(192,193,255,0.5)] transition-all duration-300 active:scale-95"
+                  >
+                    CONTACT ME
+                    <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
+                  </a>
+                </motion.div>
+              </div>
             </div>
 
-            {/* Rotating tagline */}
+            {/* Rotating tagline strip under the hero */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
               className="mt-12 flex items-center justify-center lg:justify-start"
             >
               <RotatingText />
