@@ -106,7 +106,7 @@ export default function Home() {
         </section>
 
         {/* Narrative pillars */}
-        <section className="px-6 md:px-margin-desktop pt-10 md:pt-16 pb-section-gap">
+        <section className="px-6 md:px-margin-desktop pt-20 md:pt-28 pb-section-gap">
           <div className="max-w-7xl mx-auto">
             <motion.div
               variants={fadeUp}

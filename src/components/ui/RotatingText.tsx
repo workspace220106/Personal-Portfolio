@@ -35,7 +35,7 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
         <span className="text-primary mx-[0.18em]">+</span>
         <span
           className="relative inline-block overflow-hidden align-baseline"
-          style={{ height: "1em", width: "18ch" }}
+          style={{ height: "1.2em", width: "18ch", lineHeight: 1 }}
         >
           {/* Invisible baseline anchor — gives this inline-block a real text
               baseline so the absolute-positioned rotating word aligns with the
@@ -52,6 +52,7 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "-100%", opacity: 0 }}
               transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              style={{ lineHeight: 1 }}
               className="absolute left-0 top-0 whitespace-nowrap text-primary"
             >
               {words[index]}
