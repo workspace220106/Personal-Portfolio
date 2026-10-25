@@ -56,7 +56,7 @@ export default function HeroPortrait() {
   return (
     <div
       ref={containerRef}
-      className="relative mx-auto w-[300px] h-[420px] sm:w-[380px] sm:h-[520px] md:w-[480px] md:h-[640px] [perspective:1200px]"
+      className="relative mx-auto w-[320px] h-[460px] sm:w-[420px] sm:h-[580px] md:w-[540px] md:h-[720px] lg:w-[620px] lg:h-[820px] [perspective:1200px]"
     >
       {/* Soft radial glow sitting behind the subject */}
       <div
