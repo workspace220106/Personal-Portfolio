@@ -28,14 +28,14 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
     // to the longest word so the row never reflows when the word changes.
     return (
       <div
-        className="font-headline-xl font-bold leading-[0.92] tracking-[-0.04em] whitespace-nowrap flex items-baseline w-full"
-        style={{ fontSize: "clamp(32px, 6.8vw, 200px)" }}
+        className="font-headline-xl font-bold leading-[0.92] tracking-[-0.055em] whitespace-nowrap flex items-baseline w-full"
+        style={{ fontSize: "clamp(28px, 5.7vw, 170px)" }}
       >
         <span className="text-fade-dark">DEVELOPER</span>
-        <span className="text-primary mx-[0.25em]">+</span>
+        <span className="text-primary mx-[0.18em]">+</span>
         <span
           className="relative inline-block overflow-hidden align-baseline"
-          style={{ height: "1em", width: "19ch" }}
+          style={{ height: "1em", width: "18ch" }}
         >
           <AnimatePresence mode="wait">
             <motion.span
