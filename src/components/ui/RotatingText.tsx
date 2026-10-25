@@ -22,27 +22,33 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   if (large) {
+    // "DEVELOPER + <role>" renders on a single line that always fits:
+    // font-size scales with viewport (clamp vw). The rotating slot is sized
+    // to the widest role so the layout never jumps when the word changes.
     return (
       <div
-        className="flex flex-wrap items-baseline gap-x-6 md:gap-x-10 font-headline-xl font-bold leading-[0.88] tracking-[-0.04em] text-[48px] sm:text-[80px] md:text-[112px] lg:text-[150px] xl:text-[176px]"
+        className="font-headline-xl font-bold leading-[0.95] tracking-[-0.04em] whitespace-nowrap flex items-baseline"
+        style={{ fontSize: "clamp(28px, 5.1vw, 120px)" }}
       >
         <span className="text-fade-dark">DEVELOPER</span>
-
-        <div className="relative overflow-hidden h-[1em] min-w-[260px] sm:min-w-[460px] md:min-w-[640px] lg:min-w-[860px] xl:min-w-[1000px]">
+        <span className="text-primary mx-[0.3em]">+</span>
+        <span
+          className="relative inline-block overflow-hidden align-baseline"
+          style={{ height: "1em", width: "13ch" }}
+        >
           <AnimatePresence mode="wait">
             <motion.span
               key={words[index]}
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "-100%", opacity: 0 }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-0 whitespace-nowrap text-primary"
+              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute left-0 top-0 whitespace-nowrap text-primary"
             >
-              <span className="mr-3 md:mr-5">+</span>
               {words[index]}
             </motion.span>
           </AnimatePresence>
-        </div>
+        </span>
       </div>
     );
   }

@@ -50,27 +50,28 @@ export default function ProjectScroll({ projects }: ProjectScrollProps) {
       // Enough vertical travel to pin the row for ~1 card-width per card.
       style={{ height: `${Math.max(2, n) * 100}vh` }}
     >
-      {/* Sticky stage pinned to the viewport while the parent scrolls. */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Section heading hovering top-left */}
-        <div className="pointer-events-none absolute top-24 left-6 md:left-margin-desktop z-30 max-w-md">
-          <div className="pointer-events-auto border-l-4 border-primary pl-6">
-            <h2 className="font-headline-md text-headline-md text-on-surface mb-2">PROJECTS</h2>
-            <p className="font-label-caps text-label-caps text-on-surface-variant tracking-widest">
-              SCROLL · EVERY ONE LIVE, NOT JUST SOURCE
-            </p>
+      {/* Sticky stage pinned to the viewport while the parent scrolls.
+          Vertical layout: title band (reserved), then the horizontal 3D stage. */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col">
+        {/* Title band — reserves its own vertical slot so cards never overlap it */}
+        <div className="shrink-0 pt-24 pb-6 px-6 md:px-margin-desktop">
+          <div className="max-w-7xl mx-auto flex items-end justify-between gap-6">
+            <div className="border-l-4 border-primary pl-6">
+              <h2 className="font-headline-md text-headline-md text-on-surface mb-1">PROJECTS</h2>
+              <p className="font-label-caps text-label-caps text-on-surface-variant tracking-widest">
+                SCROLL · EVERY ONE LIVE, NOT JUST SOURCE
+              </p>
+            </div>
+            <div className="hidden md:flex items-center gap-2 font-label-caps text-[10px] tracking-[0.3em] text-on-surface-variant/60">
+              <span className="material-symbols-outlined text-[14px]">swipe</span>
+              SCROLL TO ADVANCE
+            </div>
           </div>
         </div>
 
-        {/* Hint at bottom */}
-        <div className="pointer-events-none absolute bottom-8 right-6 md:right-margin-desktop z-30 font-label-caps text-[10px] tracking-[0.3em] text-on-surface-variant/60 flex items-center gap-2">
-          <span className="material-symbols-outlined text-[14px]">swipe</span>
-          SCROLL TO ADVANCE
-        </div>
-
-        {/* 3D perspective container */}
+        {/* 3D perspective container fills the remaining space */}
         <div
-          className="absolute inset-0 flex items-center"
+          className="relative flex-1 flex items-center overflow-hidden"
           style={{ perspective: '1600px' }}
         >
           <TrackInner

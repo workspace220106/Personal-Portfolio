@@ -92,7 +92,7 @@ export default function Home() {
         </section>
 
         {/* DEVELOPER + <rotating role> — oversized tagline below the hero */}
-        <section className="relative px-6 md:px-margin-desktop pt-4 pb-section-gap overflow-hidden">
+        <section className="relative px-6 md:px-margin-desktop pt-2 pb-16 overflow-hidden">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
