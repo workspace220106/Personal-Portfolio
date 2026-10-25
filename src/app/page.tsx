@@ -39,7 +39,8 @@ export default function Home() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="relative z-10 font-headline-xl font-bold leading-[0.88] tracking-[-0.04em] text-[64px] sm:text-[96px] md:text-[140px] lg:text-[180px] xl:text-[210px]"
             >
-              HI, I&apos;M <span className="text-primary">RAJIV</span>
+              <span className="text-fade-dark">HI, I&apos;M </span>
+              <span className="text-primary">RAJIV</span>
             </motion.h1>
 
             {/* Portrait layer — pulled up with negative margin, sits ON TOP of the headline */}
@@ -87,16 +88,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Rotating tagline strip under the hero */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="mt-12 flex items-center justify-center lg:justify-start"
-            >
-              <RotatingText />
-            </motion.div>
+          </div>
+        </section>
 
+        {/* DEVELOPER + <rotating role> — oversized tagline below the hero */}
+        <section className="relative px-6 md:px-margin-desktop pt-4 pb-section-gap overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <RotatingText large />
+            </motion.div>
           </div>
         </section>
 

@@ -224,3 +224,19 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
+
+/* Vertical grey → black gradient on text — "sinks into shadow" at the bottom.
+   Applied via background-clip: text so the glyphs themselves receive the fade. */
+.text-fade-dark {
+  background: linear-gradient(
+    to bottom,
+    #e5e5e5 0%,
+    #a3a3a3 42%,
+    #4a4a4a 72%,
+    #0a0a0a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
