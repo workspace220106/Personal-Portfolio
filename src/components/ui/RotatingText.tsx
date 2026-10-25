@@ -37,6 +37,14 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
           className="relative inline-block overflow-hidden align-baseline"
           style={{ height: "1em", width: "18ch" }}
         >
+          {/* Invisible baseline anchor — gives this inline-block a real text
+              baseline so the absolute-positioned rotating word aligns with the
+              "DEVELOPER +" baseline on its left. Without it, an inline-block
+              with only absolute children baselines to its bottom edge, which
+              is what caused "DEVELOPER" to sit lower than the rotating word. */}
+          <span aria-hidden className="opacity-0 select-none">
+            M
+          </span>
           <AnimatePresence mode="wait">
             <motion.span
               key={words[index]}
