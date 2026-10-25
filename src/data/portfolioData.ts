@@ -23,31 +23,11 @@ export interface Stat {
   value: string;
 }
 
-export interface Hackathon {
-  name: string;
-  date: string;
-  tag?: string;
-}
-
-export interface Certification {
-  title: string;
-  issuer?: string;
-}
-
 export const stats: Stat[] = [
   { label: 'ROLES HELD', value: '10 ACROSS 7 ORGS' },
   { label: 'PROJECTS SHIPPED', value: '29 REPOS' },
   { label: 'ON-TIME DELIVERY', value: '90%+ SPRINTS' },
   { label: 'PAGE LOAD', value: '−69% ONJI' },
-];
-
-export const impactMetrics: Stat[] = [
-  { label: 'MOBILE ENGAGEMENT', value: '+22%' },
-  { label: 'PAGE LOAD TIME', value: '−69%' },
-  { label: 'DESIGN → DEV HANDOFF', value: '−35%' },
-  { label: 'PAGE RESPONSE', value: '~30% FASTER' },
-  { label: 'SPRINT ON-TIME', value: '90%+' },
-  { label: 'ENG TEAM GROWTH', value: '+3 HIRES' },
 ];
 
 export const experiences: Experience[] = [
@@ -197,24 +177,6 @@ export const projects: Project[] = [
     tags: ['CNN', 'MediaPipe', '94% acc', 'sub-50ms']
   },
   {
-    name: 'Awaken IQ',
-    type: 'CLIENT WORK',
-    desc: 'Student portal module built during my AwakenIQ internship — auth, enrollment, attendance. Real client delivery, weekly releases.',
-    img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80&auto=format&fit=crop',
-    link: 'https://website-ashy-psi-28.vercel.app/',
-    align: 'start',
-    tags: ['React', 'Next.js', 'Client Delivery']
-  },
-  {
-    name: 'Flora Flutter',
-    type: 'MOBILE / FLUTTER',
-    desc: 'First Flutter + Dart project (Oct 2026) — mobile-native plant care companion. Adds mobile to the stack.',
-    img: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=80&auto=format&fit=crop',
-    link: 'https://floraflutter.vercel.app/',
-    align: 'end',
-    tags: ['Flutter', 'Dart', 'Mobile']
-  },
-  {
     name: 'Smart Agri IoT',
     type: 'IOT / AGTECH',
     desc: 'IoT-based agricultural monitoring — sensor telemetry, dashboarding, and automated advisories for small-plot farming.',
@@ -232,24 +194,6 @@ export const projects: Project[] = [
     align: 'end',
     tags: ['SaaS', 'Operations', 'React']
   },
-  {
-    name: 'Sidhi Florals',
-    type: 'E-COMMERCE',
-    desc: 'Commercial e-commerce storefront for a florist — catalog, cart, checkout flow. Shipping real commercial-site chops.',
-    img: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1600&q=80&auto=format&fit=crop',
-    link: 'https://sidhi-florals.vercel.app/',
-    align: 'start',
-    tags: ['E-commerce', 'Commercial', 'Storefront']
-  },
-  {
-    name: 'SplitSmart',
-    type: 'UTILITY',
-    desc: 'Bill-splitting app — track shared expenses, settle balances, keep groups honest.',
-    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80&auto=format&fit=crop',
-    link: 'https://split-smart-2.vercel.app/',
-    align: 'end',
-    tags: ['Fintech', 'React', 'Groups']
-  },
 
   // ─── TIER 3: AI / AGENTS — "AI engineer" narrative ──────────────────────
   {
@@ -262,36 +206,14 @@ export const projects: Project[] = [
     tags: ['Multi-agent', 'LLM', 'Local']
   },
   {
-    name: 'Financial Agent Planner',
-    type: 'AI AGENTS',
-    desc: 'Financial AI agent that plans — companion piece to PacPay, focused on autonomous reasoning over money workflows.',
-    img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=80&auto=format&fit=crop',
-    link: 'https://github.com/workspace220106/Financial-Agent-Planner',
-    align: 'end',
-    tags: ['AI Agent', 'Planning', 'Finance']
-  },
-  {
     name: 'Attention Is All You Need',
     type: 'ML FUNDAMENTALS',
     desc: 'Transformer architecture implemented from scratch — not an API wrapper, actual ML fundamentals. Great AI/ML credibility signal.',
     img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&q=80&auto=format&fit=crop',
     link: 'https://github.com/workspace220106/Attention-Is-All-You-Need-Implementation',
-    align: 'start',
+    align: 'end',
     tags: ['Transformer', 'From scratch', 'PyTorch']
   },
-];
-
-export const hackathons: Hackathon[] = [
-  { name: 'AI-EXPO Hackathon', date: 'SEP 2026' },
-  { name: 'BNB26 Ben10 Internal Round', date: 'OCT 2026' },
-  { name: 'Hackathon-2 (AI Hackathon)', date: 'SEP 2026', tag: 'ai-hackathon-ashen.vercel.app' },
-  { name: 'AI-Buildathon', date: 'JUN 2026' },
-  { name: 'DevFusion 3.0', date: 'JUN 2026' },
-];
-
-export const certifications: Certification[] = [
-  { title: 'Google AI Professional Certificate', issuer: 'Google' },
-  { title: 'Microsoft Power BI Data Analyst', issuer: 'Microsoft' },
 ];
 
 export const techStack: string[] = [

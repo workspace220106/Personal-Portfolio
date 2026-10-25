@@ -11,9 +11,6 @@ import {
   experiences,
   projects,
   stats,
-  impactMetrics,
-  hackathons,
-  certifications,
   techStack,
   narrativePillars,
 } from '@/data/portfolioData';
@@ -160,63 +157,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Impact Metrics */}
-        <section className="px-6 md:px-margin-desktop py-section-gap" id="impact">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-10 border-l-4 border-primary pl-6">
-              <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Impact</h2>
-              <h3 className="font-headline-md text-headline-md">Shipping-oriented engineer — self-reported metrics across roles.</h3>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {impactMetrics.map((m, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="glass-card p-6 border border-white/10 hover:border-primary/40 transition-all"
-                >
-                  <p className="font-headline-md text-2xl md:text-3xl text-primary mb-2">{m.value}</p>
-                  <p className="font-label-caps text-[10px] text-on-surface-variant tracking-[0.15em]">{m.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Education */}
-        <section className="px-6 md:px-margin-desktop py-section-gap">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-section-gap">
-            <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
-              <div className="border-l-4 border-primary pl-6">
-                <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Education</h2>
-                <h3 className="font-headline-md text-headline-md text-on-surface">Fr. C. Rodrigues Institute of Technology</h3>
-                <p className="text-on-surface-variant mt-2">B.E. Information Technology · CGPA 8.71</p>
-                <p className="font-label-caps text-sm text-primary/60 mt-1">Expected May 2027</p>
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
-              <h2 className="font-headline-md text-headline-md mb-8">Key Pillars</h2>
-              <div className="space-y-6">
-                {[
-                  { icon: 'developer_mode', title: 'Full-Stack Dev', desc: 'React, Next.js, Node, Express, FastAPI, Flutter — product end to end.' },
-                  { icon: 'psychology', title: 'AI/ML Engineer', desc: 'TensorFlow, Keras, scikit-learn, custom CNNs, RAG with FAISS + Gemini, Transformers from scratch.' },
-                  { icon: 'rocket_launch', title: 'Operator', desc: 'COO at ONJI — 90%+ sprint delivery, grew eng team by 3, weekly release cadence.' },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-6 group">
-                    <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">{item.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                      <p className="text-on-surface-variant">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Work Experience */}
         <section className="px-6 md:px-margin-desktop py-section-gap overflow-hidden" id="experience">
           <div className="max-w-4xl mx-auto">
@@ -240,7 +180,7 @@ export default function Home() {
         <section className="px-6 md:px-margin-desktop py-section-gap max-w-7xl mx-auto" id="projects">
           <div className="mb-stack-lg border-l-4 border-primary pl-6">
             <h2 className="font-headline-md text-headline-md text-on-surface mb-2">PROJECTS</h2>
-            <p className="font-label-caps text-label-caps text-on-surface-variant">15 FEATURED · EVERY ONE LIVE, NOT JUST SOURCE</p>
+            <p className="font-label-caps text-label-caps text-on-surface-variant">PROJECT SHOWCASE · EVERY ONE LIVE, NOT JUST SOURCE</p>
           </div>
           <div className="flex flex-col items-center">
             {projects.map((proj, i) => (
@@ -288,35 +228,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Hackathons */}
-        <section className="px-6 md:px-margin-desktop py-section-gap" id="hackathons">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-10 border-l-4 border-primary pl-6">
-              <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Hackathons</h2>
-              <h3 className="font-headline-md text-headline-md">Top-3 in 2 inter-college hackathons · 5+ hackathon submissions in 2026 alone.</h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {hackathons.map((h, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="glass-card p-6 border border-white/10 hover:border-primary/40 transition-all flex items-center justify-between"
-                >
-                  <div>
-                    <h4 className="font-headline-md text-lg mb-1">{h.name}</h4>
-                    <p className="font-label-caps text-[10px] text-primary tracking-[0.2em]">{h.date}</p>
-                    {h.tag && <p className="text-[10px] text-on-surface-variant/60 font-mono mt-2">{h.tag}</p>}
-                  </div>
-                  <span className="material-symbols-outlined text-primary/60 text-2xl">bolt</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Core Capabilities */}
         <section className="px-6 md:px-margin-desktop py-section-gap">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-gutter">
@@ -346,33 +257,6 @@ export default function Home() {
                     <span className="material-symbols-outlined text-4xl group-hover:rotate-45 transition-transform duration-300">north_east</span>
                   </div>
                   <p className="max-w-lg mt-6 text-on-surface-variant font-body-lg text-body-lg">{cap.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Certifications */}
-        <section className="px-6 md:px-margin-desktop py-section-gap">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-10 border-l-4 border-primary pl-6">
-              <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Certifications</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {certifications.map((cert, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ y: -5 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="glass-card p-8 group hover:border-primary/40 transition-all duration-300"
-                >
-                  <h3 className="font-headline-md text-xl mb-2">{cert.title}</h3>
-                  <p className="text-on-surface-variant font-label-caps text-[10px] tracking-[0.2em]">
-                    {cert.issuer ? `${cert.issuer.toUpperCase()} · ` : ''}VERIFIED CREDENTIAL
-                  </p>
                 </motion.div>
               ))}
             </div>
