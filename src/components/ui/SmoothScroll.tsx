@@ -6,18 +6,20 @@ import Lenis from "lenis";
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      // Lower lerp = snappier, higher = buttery. 0.08–0.12 is the sweet spot.
-      lerp: 0.1,
-      // Natural wheel feel — no fractional multiplier so flicks don't feel sluggish
-      wheelMultiplier: 1,
+      // Much lower lerp = heavier, buttery drift. 0.05 is on the slow end
+      // of the usable range — anything lower starts to feel unresponsive.
+      lerp: 0.055,
+      // Slightly damp the wheel so one flick glides further instead of
+      // snapping. Mobile stays at a natural multiplier.
+      wheelMultiplier: 0.85,
       touchMultiplier: 1.4,
       smoothWheel: true,
-      // Respect prefers-reduced-motion
       syncTouch: false,
       orientation: "vertical",
       gestureOrientation: "vertical",
-      // Default easing is already a smooth ease-out; override only if we want flair
-      easing: (t) => 1 - Math.pow(1 - t, 3),
+      // Quintic ease-out — longer tail than cubic, so the scroll "settles"
+      // instead of landing hard.
+      easing: (t) => 1 - Math.pow(1 - t, 5),
     });
 
     // Expose lenis for anchor click handlers and other UI that wants to drive scroll

@@ -30,11 +30,14 @@ export default function ProjectScroll({ projects }: ProjectScrollProps) {
     offset: ['start start', 'end end'],
   });
 
-  // Smooth the raw progress so the tilt and translation glide instead of jitter.
+  // Heavier spring so the tilt and translation glide like oil instead of
+  // snapping to the scroll position. Low stiffness + high damping + more
+  // mass = slow, buttery follow with no overshoot.
   const smooth = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
-    mass: 0.6,
+    stiffness: 42,
+    damping: 42,
+    mass: 1.1,
+    restDelta: 0.0005,
   });
 
   const n = projects.length;
