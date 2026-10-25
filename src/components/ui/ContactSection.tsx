@@ -2,16 +2,9 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Scene from '@/components/canvas/Scene';
 import LiveLocation from '@/components/ui/LiveLocation';
 
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-};
-
-export default function Contact() {
+export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -26,10 +19,8 @@ export default function Contact() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
 
       const result = await response.json();
@@ -39,7 +30,7 @@ export default function Contact() {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -48,24 +39,60 @@ export default function Contact() {
   };
 
   return (
-    <>
-      <Scene />
-      <main className="mt-32 px-8 md:px-margin-desktop pb-section-gap max-w-[1440px] mx-auto relative z-10">
+    <section
+      id="contact"
+      className="relative px-8 md:px-margin-desktop py-section-gap scroll-mt-24"
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-stack-lg border-l-4 border-primary pl-6"
+        >
+          <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">
+            Contact
+          </h2>
+          <h3 className="font-headline-md text-headline-md text-on-surface mt-2">
+            Let&apos;s build something together.
+          </h3>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
-          {/* Command Cards (Left Column) */}
+          {/* Command Cards */}
           <div className="lg:col-span-4 flex flex-col gap-stack-md">
-            <motion.h3
+            <motion.h4
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               className="font-label-caps text-label-caps text-on-surface-variant mb-4"
             >
               COMMAND CENTER
-            </motion.h3>
+            </motion.h4>
 
             {[
-              { label: 'NETWORK / 01', title: 'LINKEDIN', url: 'https://www.linkedin.com/in/rajiv-agarwal221/', icon: 'hub', sub: 'linkedin.com/in/rajiv-agarwal221/' },
-              { label: 'SOURCE / 02', title: 'GITHUB', url: 'https://github.com/workspace220106', icon: 'code', sub: 'github.com/workspace220106' },
-              { label: 'DIRECT / 03', title: 'EMAIL', url: 'mailto:workspace220106@gmail.com', icon: 'mail_outline', sub: 'workspace220106@gmail.com' },
+              {
+                label: 'NETWORK / 01',
+                title: 'LINKEDIN',
+                url: 'https://www.linkedin.com/in/rajiv-agarwal221/',
+                icon: 'hub',
+                sub: 'linkedin.com/in/rajiv-agarwal221/',
+              },
+              {
+                label: 'SOURCE / 02',
+                title: 'GITHUB',
+                url: 'https://github.com/workspace220106',
+                icon: 'code',
+                sub: 'github.com/workspace220106',
+              },
+              {
+                label: 'DIRECT / 03',
+                title: 'EMAIL',
+                url: 'mailto:workspace220106@gmail.com',
+                icon: 'mail_outline',
+                sub: 'workspace220106@gmail.com',
+              },
             ].map((link, i) => (
               <motion.a
                 key={i}
@@ -73,17 +100,25 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.1 * (i + 1) }}
                 whileHover={{ scale: 1.02, x: 5 }}
                 className="command-card glass-card p-8 group transition-all duration-300 flex justify-between items-center cursor-pointer"
               >
                 <div className="flex flex-col gap-2">
-                  <span className="font-label-caps text-label-caps text-on-surface-variant">{link.label}</span>
-                  <h4 className="font-headline-md text-headline-md text-primary" style={{ textShadow: 'rgba(192, 193, 255, 0.2) 0px 0px 10px' }}>
+                  <span className="font-label-caps text-label-caps text-on-surface-variant">
+                    {link.label}
+                  </span>
+                  <h4
+                    className="font-headline-md text-headline-md text-primary"
+                    style={{ textShadow: 'rgba(192, 193, 255, 0.2) 0px 0px 10px' }}
+                  >
                     {link.title}
                   </h4>
-                  <span className="text-[10px] text-on-surface-variant opacity-60 font-mono mt-1">{link.sub}</span>
+                  <span className="text-[10px] text-on-surface-variant opacity-60 font-mono mt-1">
+                    {link.sub}
+                  </span>
                 </div>
                 <span className="material-symbols-outlined text-primary text-4xl group-hover:text-white transition-colors duration-300">
                   {link.icon}
@@ -93,20 +128,22 @@ export default function Contact() {
 
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="mt-stack-lg p-8 border border-white/5 bg-surface-container-lowest"
+              className="mt-stack-md p-8 border border-white/5 bg-surface-container-lowest"
             >
               <p className="font-body-md text-body-md text-on-surface-variant italic opacity-60">
-                "Technology is best when it brings people together."
+                &quot;Technology is best when it brings people together.&quot;
               </p>
             </motion.div>
           </div>
 
-          {/* Contact Form (Right Column) */}
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="lg:col-span-8 glass-card p-8 md:p-12"
           >
@@ -153,18 +190,26 @@ export default function Contact() {
                 <button
                   disabled={isSubmitting}
                   className={`w-full md:w-auto font-label-caps text-label-caps px-12 py-6 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group ${
-                    submitStatus === 'success' 
-                      ? 'bg-green-500/20 text-green-400 border-green-500/40' 
+                    submitStatus === 'success'
+                      ? 'bg-green-500/20 text-green-400 border-green-500/40'
                       : 'bg-primary-container/20 text-primary border border-primary/40 hover:bg-primary-container/30 hover:border-primary'
                   }`}
                   type="submit"
                 >
-                  {isSubmitting ? 'TRANSMITTING...' : submitStatus === 'success' ? 'TRANSMISSION COMPLETE' : 'INITIATE TRANSMISSION'}
-                  <span className={`material-symbols-outlined text-[18px] transition-all ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`}>
+                  {isSubmitting
+                    ? 'TRANSMITTING...'
+                    : submitStatus === 'success'
+                      ? 'TRANSMISSION COMPLETE'
+                      : 'INITIATE TRANSMISSION'}
+                  <span
+                    className={`material-symbols-outlined text-[18px] transition-all ${
+                      isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'
+                    }`}
+                  >
                     {submitStatus === 'success' ? 'check_circle' : 'send'}
                   </span>
                 </button>
-                
+
                 <AnimatePresence>
                   {submitStatus === 'error' && (
                     <motion.span
@@ -182,30 +227,32 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Visual Element */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
+        {/* Live location banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
           className="mt-section-gap"
         >
-          <div className="relative w-full h-[400px] overflow-hidden glass-card group">
+          <div className="relative w-full h-[280px] md:h-[360px] overflow-hidden glass-card group">
             <img
               alt="Global connectivity grid"
-              className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700 scale-105 group-hover:scale-100 transition-transform duration-1000"
+              className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-all duration-700 scale-105 group-hover:scale-100"
               src="/location-bg.png"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8">
-              <h5 className="font-label-caps text-label-caps text-on-surface mb-2">CURRENT LOCATION</h5>
+              <h5 className="font-label-caps text-label-caps text-on-surface mb-2">
+                CURRENT LOCATION
+              </h5>
               <div className="flex items-center gap-2">
                 <LiveLocation />
               </div>
             </div>
           </div>
-        </motion.section>
-      </main>
-    </>
+        </motion.div>
+      </div>
+    </section>
   );
 }

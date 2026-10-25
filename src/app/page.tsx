@@ -6,7 +6,9 @@ import Scene from '@/components/canvas/Scene';
 import VoidReveal from '@/components/ui/VoidReveal';
 import Link from 'next/link';
 import RotatingText from '@/components/ui/RotatingText';
-import { experiences, projects, stats } from '@/data/portfolioData';
+import HeroPortrait from '@/components/ui/HeroPortrait';
+import ContactSection from '@/components/ui/ContactSection';
+import { experiences, projects } from '@/data/portfolioData';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -29,97 +31,77 @@ export default function Home() {
     <VoidReveal>
       <Scene />
       <main className="relative z-10">
-        {/* Hero Section */}
-        <section className="min-h-[800px] flex flex-col justify-start px-8 md:px-margin-desktop relative overflow-hidden pt-32">
+        {/* Hero Section — Alex-style: HI I'M <NAME> wrapping over a centered portrait */}
+        <section className="relative min-h-screen px-6 md:px-margin-desktop pt-28 md:pt-24 pb-16 overflow-hidden">
           <div className="absolute inset-0 glow-bg pointer-events-none" />
-          <div className="max-w-7xl z-10">
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={staggerContainer}
-              className="flex flex-col"
+
+          <div className="relative z-10 max-w-7xl mx-auto">
+
+            {/* Big headline — full width, sits BEHIND the portrait */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 font-headline-xl font-bold leading-[0.88] tracking-[-0.04em] text-[64px] sm:text-[96px] md:text-[140px] lg:text-[180px] xl:text-[210px]"
             >
+              HI, I&apos;M <span className="text-primary">RAJIV</span>
+            </motion.h1>
 
-              <motion.h1
-                variants={fadeUp}
-                className="font-headline-xl text-headline-xl md:text-headline-xl text-headline-lg-mobile max-w-5xl mb-stack-lg"
-              >
-                <RotatingText large />
-              </motion.h1>
+            {/* Portrait layer — pulled up with negative margin, sits ON TOP of the headline */}
+            <div className="relative mt-[-40px] sm:mt-[-70px] md:mt-[-110px] lg:mt-[-150px]">
+              <div className="relative z-30 flex justify-center">
+                <HeroPortrait />
+              </div>
 
-              <motion.div
-                variants={fadeUp}
-                className="flex flex-col md:flex-row gap-gutter items-start md:items-center"
-              >
-                <div className="flex gap-4">
-                  <Link href="/about" className="font-label-caps text-label-caps border border-primary/40 bg-primary/10 px-8 py-4 hover:shadow-[0_0_15px_rgba(192,193,255,0.4)] transition-all duration-300 cursor-pointer active:scale-95">
-                    ABOUT ME
-                  </Link>
-                  <Link href="/contact" className="font-label-caps text-label-caps border border-white/20 bg-white/5 px-8 py-4 hover:bg-white/10 transition-all duration-300 cursor-pointer active:scale-95">
-                    GET IN TOUCH
-                  </Link>
-                </div>
-                <p className="max-w-sm text-on-surface-variant font-body-lg text-body-lg">
-                  B.E. Information Technology student at Fr. C. Rodrigues Institute of Technology, passionate about building intelligent digital ecosystems.
-                </p>
-              </motion.div>
-            </motion.div>
+              {/* Subcopy (left) + CTA (right) layered on top of portrait at mid-torso height */}
+              <div className="pointer-events-none absolute inset-x-0 top-[42%] md:top-[38%] z-20 flex items-start justify-between gap-6 md:gap-10 px-0">
+                <motion.p
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="pointer-events-auto max-w-[180px] md:max-w-[240px] font-label-caps text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-on-surface-variant leading-[1.9]"
+                >
+                  A SOFTWARE / IT ENGINEER PASSIONATE ABOUT BUILDING INTELLIGENT, SCALABLE DIGITAL PRODUCTS 🚀
+                </motion.p>
 
-            {/* Quick Stats */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="pointer-events-auto"
+                >
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const lenis = (window as unknown as { lenis?: { scrollTo: (t: Element | number, o?: { offset?: number }) => void } }).lenis;
+                      const target = document.getElementById('contact');
+                      if (lenis && target) {
+                        lenis.scrollTo(target, { offset: -80 });
+                      } else if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                      }
+                      history.replaceState(null, '', '#contact');
+                    }}
+                    className="inline-flex items-center gap-2 bg-primary text-black font-label-caps text-label-caps px-6 md:px-8 py-3.5 md:py-4 rounded-full hover:shadow-[0_0_28px_rgba(192,193,255,0.5)] transition-all duration-300 active:scale-95"
+                  >
+                    CONTACT ME
+                    <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
+                  </a>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Rotating tagline strip under the hero */}
             <motion.div
               initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="z-10 mt-24 grid grid-cols-2 gap-8 border-t border-white/10 pt-12 md:grid-cols-4"
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="mt-12 flex items-center justify-center lg:justify-start"
             >
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + (i * 0.1) }}
-                >
-                  <p className="font-label-caps text-[10px] text-primary mb-2">{stat.label}</p>
-                  <p className="font-headline-md text-2xl uppercase">{stat.value}</p>
-                </motion.div>
-              ))}
+              <RotatingText />
             </motion.div>
 
-
-          </div>
-        </section>
-
-        {/* Education & Highlights */}
-        <section className="px-8 md:px-margin-desktop py-section-gap" id="about">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-section-gap">
-              <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
-                <div className="mb-12 border-l-4 border-primary pl-6">
-                  <h2 className="font-label-caps text-label-caps text-primary mb-2">EDUCATION</h2>
-                  <h3 className="font-headline-md text-headline-md text-on-surface">Fr. C. Rodrigues Institute of Technology</h3>
-                  <p className="text-on-surface-variant mt-2">B.E. Information Technology (CGPA 8.71)</p>
-                  <p className="font-label-caps text-sm text-primary/60 mt-1">Expected May 2027</p>
-                </div>
-              </motion.div>
-              <motion.div variants={fadeUp} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
-                <h2 className="font-headline-md text-headline-md mb-8">KEY HIGHLIGHTS</h2>
-                <div className="space-y-8">
-                  {[
-                    { icon: 'developer_mode', title: 'Full-Stack Dev', desc: 'Expertise in React, Next.js, Node.js, and modern CSS frameworks to build responsive, performant web applications.' },
-                    { icon: 'psychology', title: 'AI/ML Engineer', desc: 'Leveraging TensorFlow and PyTorch to integrate intelligent features and predictive models into software solutions.' },
-                    { icon: 'groups', title: 'Agile Leader', desc: 'Serving as Scrum Master at ONJI, coordinating sprints and ensuring streamlined delivery pipelines.' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-6 group">
-                      <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">{item.icon}</span>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                        <p className="text-on-surface-variant">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
           </div>
         </section>
 
@@ -137,30 +119,6 @@ export default function Home() {
                   <ExperienceItem key={i} exp={exp} index={i} />
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Certifications */}
-        <section className="px-8 md:px-margin-desktop py-section-gap">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-12 border-l-4 border-primary pl-6">
-              <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Certifications</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { title: 'Google AI Professional Certificate' },
-                { title: 'Microsoft Power BI Data Analyst' },
-              ].map((cert, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ y: -5 }}
-                  className="glass-card p-8 group hover:border-primary/40 transition-all duration-300"
-                >
-                  <h3 className="font-headline-md text-xl mb-2">{cert.title}</h3>
-                  <p className="text-on-surface-variant font-label-caps text-[10px]">VERIFIED CREDENTIAL</p>
-                </motion.div>
-              ))}
             </div>
           </div>
         </section>
@@ -266,6 +224,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Contact (inlined above footer) */}
+        <ContactSection />
       </main>
     </VoidReveal>
   );
