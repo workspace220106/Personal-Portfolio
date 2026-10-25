@@ -11,7 +11,6 @@ import ProjectScroll from '@/components/ui/ProjectScroll';
 import {
   experiences,
   projects,
-  stats,
   techStack,
   narrativePillars,
 } from '@/data/portfolioData';
@@ -98,24 +97,6 @@ export default function Home() {
               <RotatingText />
             </motion.div>
 
-          </div>
-        </section>
-
-        {/* Quick Stats Strip */}
-        <section className="px-6 md:px-margin-desktop">
-          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-white/10 pt-10 pb-4">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.08 * i }}
-              >
-                <p className="font-label-caps text-[10px] text-primary mb-2 tracking-[0.2em]">{stat.label}</p>
-                <p className="font-headline-md text-xl md:text-2xl uppercase">{stat.value}</p>
-              </motion.div>
-            ))}
           </div>
         </section>
 
