@@ -22,19 +22,20 @@ export default function RotatingText({ large = false }: { large?: boolean }) {
   }, []);
 
   if (large) {
-    // "DEVELOPER + <role>" renders on a single line that always fits:
-    // font-size scales with viewport (clamp vw). The rotating slot is sized
-    // to the widest role so the layout never jumps when the word changes.
+    // "DEVELOPER + <role>" renders on a single line that spans the full
+    // viewport. Font-size scales with vw so the whole phrase (including the
+    // longest role) stretches across the width. The rotating slot is sized
+    // to the longest word so the row never reflows when the word changes.
     return (
       <div
-        className="font-headline-xl font-bold leading-[0.95] tracking-[-0.04em] whitespace-nowrap flex items-baseline"
-        style={{ fontSize: "clamp(28px, 5.1vw, 120px)" }}
+        className="font-headline-xl font-bold leading-[0.92] tracking-[-0.04em] whitespace-nowrap flex items-baseline w-full"
+        style={{ fontSize: "clamp(32px, 6.8vw, 200px)" }}
       >
         <span className="text-fade-dark">DEVELOPER</span>
-        <span className="text-primary mx-[0.3em]">+</span>
+        <span className="text-primary mx-[0.25em]">+</span>
         <span
           className="relative inline-block overflow-hidden align-baseline"
-          style={{ height: "1em", width: "13ch" }}
+          style={{ height: "1em", width: "19ch" }}
         >
           <AnimatePresence mode="wait">
             <motion.span

@@ -91,18 +91,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* DEVELOPER + <rotating role> — oversized tagline below the hero */}
-        <section className="relative px-6 md:px-margin-desktop pt-2 pb-16 overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <RotatingText large />
-            </motion.div>
-          </div>
+        {/* DEVELOPER + <rotating role> — oversized tagline spanning the full
+            viewport width below the hero. No max-width cap so it stretches edge
+            to edge; minimal padding so no empty band hangs underneath. */}
+        <section className="relative px-6 md:px-margin-desktop pt-0 pb-0 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <RotatingText large />
+          </motion.div>
         </section>
 
         {/* Narrative pillars */}
