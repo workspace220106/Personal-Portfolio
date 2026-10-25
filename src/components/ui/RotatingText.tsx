@@ -3,7 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const words = ["DESIGNER", "PROTOTYPER", "AI/ML LEARNER"];
+const words = [
+  "FULL-STACK ENGINEER",
+  "AI / ML ENGINEER",
+  "AGENT BUILDER",
+  "AGILE OPERATOR",
+  "PROTOTYPER",
+];
 
 export default function RotatingText({ large = false }: { large?: boolean }) {
   const [index, setIndex] = useState(0);

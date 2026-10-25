@@ -4,8 +4,23 @@ import Footer from '@/components/ui/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Rajiv Agarwal — Portfolio',
-  description: 'Software / IT Engineer | Web Developer | Data Enthusiast — Building the bridge between AI/ML innovation and scalable production software.',
+  title: 'Rajiv Agarwal — Full-stack + AI Engineer',
+  description:
+    'Rajiv Agarwal — Full-stack + AI, not AI on top of full-stack. COO @ ONJI · ML Intern @ FlyRank AI. React, Next.js, FastAPI, RAG, custom CNNs, Transformers from scratch — 29 shipped projects, every one live.',
+  keywords: [
+    'Rajiv Agarwal',
+    'Full-stack engineer',
+    'AI engineer',
+    'Machine learning',
+    'React',
+    'Next.js',
+    'FastAPI',
+    'RAG',
+    'FAISS',
+    'Gemini',
+    'Flutter',
+    'FCRIT',
+  ],
 };
 
 import SmoothScroll from '@/components/ui/SmoothScroll';
