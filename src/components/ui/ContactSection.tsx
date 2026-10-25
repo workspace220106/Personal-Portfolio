@@ -150,38 +150,44 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-3 group">
-                  <label className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
+                  <label htmlFor="contact-name" className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
                     IDENTIFICATION / NAME
                   </label>
                   <input
+                    id="contact-name"
                     name="name"
                     required
-                    className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus:ring-0 focus:border-primary transition-all placeholder:text-white/10 text-on-surface outline-none"
+                    aria-label="Your name"
+                    className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus-visible:border-primary focus-visible:outline-primary focus-visible:outline-offset-4 transition-all placeholder:text-white/10 text-on-surface outline-none"
                     placeholder="Commander Name"
                     type="text"
                   />
                 </div>
                 <div className="flex flex-col gap-3 group">
-                  <label className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
+                  <label htmlFor="contact-email" className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
                     COMMUNICATION / EMAIL
                   </label>
                   <input
+                    id="contact-email"
                     name="email"
                     required
-                    className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus:ring-0 focus:border-primary transition-all placeholder:text-white/10 text-on-surface outline-none"
+                    aria-label="Your email"
+                    className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus-visible:border-primary focus-visible:outline-primary focus-visible:outline-offset-4 transition-all placeholder:text-white/10 text-on-surface outline-none"
                     placeholder="access@network.com"
                     type="email"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-3 group">
-                <label className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
+                <label htmlFor="contact-message" className="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary transition-colors">
                   PROJECT VISION
                 </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   required
-                  className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus:ring-0 focus:border-primary transition-all placeholder:text-white/10 text-on-surface resize-none outline-none"
+                  aria-label="Your message"
+                  className="bg-transparent border-0 border-b border-white/10 px-0 py-4 font-body-lg text-body-lg focus-visible:border-primary focus-visible:outline-primary focus-visible:outline-offset-4 transition-all placeholder:text-white/10 text-on-surface resize-none outline-none"
                   placeholder="Describe the breakthrough..."
                   rows={4}
                 />

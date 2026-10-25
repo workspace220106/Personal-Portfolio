@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   motion,
   useMotionValue,
@@ -9,7 +10,7 @@ import {
   useTransform,
 } from 'framer-motion';
 
-const PORTRAIT_SRC = '/portrait_4k_mature_transparent.png';
+const PORTRAIT_SRC = '/portrait.webp';
 
 export default function HeroPortrait() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,10 +86,14 @@ export default function HeroPortrait() {
           }}
           className="relative w-full h-full flex items-end justify-center will-change-transform"
         >
-          <img
+          <Image
             alt="Rajiv Agarwal"
             src={PORTRAIT_SRC}
             draggable={false}
+            priority
+            width={1200}
+            height={1128}
+            sizes="(max-width: 640px) 320px, (max-width: 1024px) 540px, 620px"
             className="relative h-full w-auto max-w-none select-none pointer-events-none"
             style={{
               filter:

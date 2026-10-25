@@ -8,6 +8,9 @@ import RotatingText from '@/components/ui/RotatingText';
 import HeroPortrait from '@/components/ui/HeroPortrait';
 import ContactSection from '@/components/ui/ContactSection';
 import ProjectScroll from '@/components/ui/ProjectScroll';
+import SplitHeadline from '@/components/ui/SplitHeadline';
+import MagneticButton from '@/components/ui/MagneticButton';
+import TechMarquee from '@/components/ui/TechMarquee';
 import {
   experiences,
   projects,
@@ -32,16 +35,17 @@ export default function Home() {
 
           <div className="relative z-10 max-w-7xl mx-auto">
 
-            {/* Big headline — full width, sits BEHIND the portrait */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            {/* Big headline — full width, sits BEHIND the portrait.
+                Rendered per-letter via SplitHeadline for a staggered rise. */}
+            <SplitHeadline
+              as="h1"
+              stagger={0.035}
               className="relative z-10 font-headline-xl font-bold leading-[0.88] tracking-[-0.04em] text-[64px] sm:text-[96px] md:text-[140px] lg:text-[180px] xl:text-[210px]"
-            >
-              <span className="text-fade-dark">HI, I&apos;M </span>
-              <span className="text-primary">RAJIV</span>
-            </motion.h1>
+              segments={[
+                { text: "HI, I'M ", className: 'text-fade-dark' },
+                { text: 'RAJIV', className: 'text-primary' },
+              ]}
+            />
 
             {/* Portrait layer — pulled up with negative margin, sits ON TOP of the headline */}
             <div className="relative mt-[-40px] sm:mt-[-70px] md:mt-[-110px] lg:mt-[-150px]">
@@ -66,8 +70,12 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="pointer-events-auto"
                 >
-                  <a
+                  <MagneticButton
                     href="#contact"
+                    cursorLabel="SAY HI"
+                    ariaLabel="Jump to contact section"
+                    strength={0.35}
+                    className="bg-primary text-black font-label-caps text-label-caps px-6 md:px-8 py-3.5 md:py-4 rounded-full hover:shadow-[0_0_28px_rgba(192,193,255,0.5)] transition-all duration-300 active:scale-95"
                     onClick={(e) => {
                       e.preventDefault();
                       const lenis = (window as unknown as { lenis?: { scrollTo: (t: Element | number, o?: { offset?: number }) => void } }).lenis;
@@ -79,11 +87,10 @@ export default function Home() {
                       }
                       history.replaceState(null, '', '#contact');
                     }}
-                    className="inline-flex items-center gap-2 bg-primary text-black font-label-caps text-label-caps px-6 md:px-8 py-3.5 md:py-4 rounded-full hover:shadow-[0_0_28px_rgba(192,193,255,0.5)] transition-all duration-300 active:scale-95"
                   >
                     CONTACT ME
                     <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
-                  </a>
+                  </MagneticButton>
                 </motion.div>
               </div>
             </div>
@@ -106,7 +113,7 @@ export default function Home() {
         </section>
 
         {/* Narrative pillars */}
-        <section className="px-6 md:px-margin-desktop pt-20 md:pt-28 pb-section-gap">
+        <section id="pitch" className="px-6 md:px-margin-desktop pt-20 md:pt-28 pb-section-gap">
           <div className="max-w-7xl mx-auto">
             <motion.div
               variants={fadeUp}
@@ -126,7 +133,8 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass-card p-6 border border-white/10"
+                  whileHover={{ y: -6 }}
+                  className="glass-card p-6 border border-white/10 hover:border-primary/40 transition-colors"
                 >
                   <span className="font-label-caps text-[10px] text-primary tracking-[0.2em] block mb-3">THREAD / 0{i + 1}</span>
                   <p className="font-body-md text-on-surface-variant leading-relaxed">{t}</p>
@@ -193,24 +201,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Tech Stack */}
-        <section className="px-6 md:px-margin-desktop py-section-gap">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-12 border-l-4 border-primary pl-6">
+        {/* Tech Stack — marquee strip */}
+        <section className="py-section-gap">
+          <div className="px-6 md:px-margin-desktop max-w-7xl mx-auto mb-10">
+            <div className="border-l-4 border-primary pl-6">
               <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">Full Tech Stack</h2>
               <p className="text-on-surface-variant mt-2 max-w-xl">Breadth: web, mobile, backend, ML, agents, IoT, data viz, PHP/Blade.</p>
             </div>
-            <div className="flex flex-wrap gap-4">
-              {techStack.map((tech, i) => (
-                <div
-                  key={tech}
-                  className={`tech-badge-circular animate-float delay-${(i % 4) + 1}`}
-                >
-                  {tech}
-                </div>
-              ))}
-            </div>
           </div>
+          <TechMarquee items={techStack} />
         </section>
 
         {/* Contact */}

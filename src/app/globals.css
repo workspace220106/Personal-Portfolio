@@ -240,3 +240,42 @@ body {
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+/* Hide the OS cursor while our custom cursor is active (fine-pointer only). */
+@media (hover: hover) and (pointer: fine) {
+  html.cursor-none-root,
+  html.cursor-none-root * {
+    cursor: none !important;
+  }
+}
+
+/* Respect prefers-reduced-motion — flatten expensive transitions globally.
+   Individual components still gate their own effects via useMediaQuery. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .text-fade-dark {
+    /* Low contrast for screen readers / low-vision users — swap to flat white */
+    background: none;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+  }
+}
+
+/* Marquee strip animation for the tech stack row */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}

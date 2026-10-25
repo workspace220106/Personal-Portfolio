@@ -133,9 +133,6 @@ function ProjectCard({
   total: number;
   smooth: MotionValue<number>;
 }) {
-  // Where this card sits in the sequence, in [0, 1].
-  const stage = total > 1 ? index / (total - 1) : 0;
-
   // Signed distance from the focal card, in units of "cards".
   // Negative => card is to the left (already passed); positive => to the right.
   const distance = useTransform(smooth, (p) => (index - p * (total - 1)));
@@ -232,7 +229,9 @@ function ProjectCard({
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 self-start mt-2 font-label-caps text-[10px] tracking-[0.2em] text-primary hover:text-white transition-colors border-b border-primary/40 pb-1"
+            data-cursor="VIEW LIVE"
+            aria-label={`Open ${project.name} live demo`}
+            className="inline-flex items-center gap-2 self-start mt-2 font-label-caps text-[10px] tracking-[0.2em] text-primary hover:text-white transition-colors border-b border-primary/40 pb-1 focus-visible:outline focus-visible:outline-primary focus-visible:outline-offset-4"
           >
             VIEW LIVE
             <span className="material-symbols-outlined text-[14px]">open_in_new</span>
