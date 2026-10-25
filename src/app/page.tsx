@@ -7,6 +7,7 @@ import VoidReveal from '@/components/ui/VoidReveal';
 import RotatingText from '@/components/ui/RotatingText';
 import HeroPortrait from '@/components/ui/HeroPortrait';
 import ContactSection from '@/components/ui/ContactSection';
+import ProjectScroll from '@/components/ui/ProjectScroll';
 import {
   experiences,
   projects,
@@ -168,57 +169,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects */}
-        <section className="px-6 md:px-margin-desktop py-section-gap max-w-7xl mx-auto" id="projects">
-          <div className="mb-stack-lg border-l-4 border-primary pl-6">
-            <h2 className="font-headline-md text-headline-md text-on-surface mb-2">PROJECTS</h2>
-            <p className="font-label-caps text-label-caps text-on-surface-variant">PROJECT SHOWCASE · EVERY ONE LIVE, NOT JUST SOURCE</p>
-          </div>
-          <div className="flex flex-col items-center">
-            {projects.map((proj, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: proj.align === 'start' ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className={`md:w-[60%] w-full ${proj.align === 'start' ? 'self-start' : 'self-end'} group cursor-pointer mb-32`}
-              >
-                <div className="glass-card overflow-hidden aspect-video mb-stack-sm transition-all duration-500 group-hover:border-primary/40 relative">
-                  <img
-                    alt={proj.name}
-                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                    src={proj.img}
-                  />
-                  {proj.featured && (
-                    <div className="absolute top-4 right-4">
-                      <span className="font-label-caps text-[10px] px-3 py-1 bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full text-primary">FEATURED</span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-col gap-4 py-4">
-                  <div className="flex-grow transition-transform duration-500 group-hover:-translate-y-2">
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="font-headline-md text-3xl">{proj.name}</h3>
-                      <span className="font-label-caps text-[10px] px-2 py-0.5 bg-white/5 rounded border border-white/10 uppercase">{proj.type}</span>
-                    </div>
-                    <p className="text-on-surface-variant max-w-xl mb-3">{proj.desc}</p>
-                    {proj.tags && proj.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {proj.tags.map((t) => (
-                          <span key={t} className="font-label-caps text-[9px] px-2 py-0.5 bg-primary/10 border border-primary/20 text-primary/90 rounded-full tracking-[0.1em]">{t}</span>
-                        ))}
-                      </div>
-                    )}
-                    <a className="inline-flex items-center gap-1 text-[10px] font-label-caps text-primary/70 hover:text-primary transition-colors mt-1 underline underline-offset-4 decoration-primary/20" href={proj.link} target="_blank" rel="noopener noreferrer">
-                      VIEW LIVE <span className="material-symbols-outlined text-xs">open_in_new</span>
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        {/* Projects — pinned horizontal 3D cover-flow scroll */}
+        <ProjectScroll projects={projects} />
 
         {/* Core Capabilities */}
         <section className="px-6 md:px-margin-desktop py-section-gap">
