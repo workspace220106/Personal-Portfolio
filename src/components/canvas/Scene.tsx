@@ -8,12 +8,13 @@ import * as THREE from 'three';
 function Particles() {
   const ref = useRef<THREE.Group>(null);
   const [sphere] = React.useState(() => {
-    const points = new Float32Array(5000 * 3);
-    for (let i = 0; i < 5000; i++) {
+    const count = 12000;
+    const points = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
       const [x, y, z] = [
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 12,
+        (Math.random() - 0.5) * 12,
+        (Math.random() - 0.5) * 12,
       ];
       points[i * 3] = x;
       points[i * 3 + 1] = y;
@@ -34,11 +35,11 @@ function Particles() {
       <Points positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#c0c1ff"
-          size={0.015}
+          color="#c8caff"
+          size={0.016}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.4}
+          opacity={0.65}
         />
       </Points>
     </group>
