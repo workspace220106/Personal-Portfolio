@@ -18,23 +18,6 @@ const SECTIONS = [
  */
 export default function Navbar() {
   const [active, setActive] = useState<string>('');
-  const [time, setTime] = useState<string>('');
-
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      const fmt = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      }).format(now);
-      setTime(fmt);
-    };
-    tick();
-    const id = setInterval(tick, 30 * 1000);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     const targets = SECTIONS.map((s) => document.getElementById(s.id)).filter(
@@ -69,52 +52,50 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-margin-desktop py-5 flex justify-between items-center pointer-events-none">
+    <nav className="absolute top-0 left-0 right-0 z-50 px-6 md:px-margin-desktop py-5 flex items-center justify-between pointer-events-none">
       {/* Brand */}
-      <Link
-        href="/"
-        className="group flex items-center gap-3 pointer-events-auto"
-        data-cursor="HOME"
-      >
-        <div className="w-8 h-8 bg-primary rounded-sm rotate-45 flex items-center justify-center group-hover:rotate-[135deg] transition-transform duration-500">
-          <div className="w-4 h-4 bg-black rotate-45" />
-        </div>
-        <span className="font-label-caps text-label-caps text-on-surface tracking-widest">
-          RAJIV AGARWAL
-        </span>
-      </Link>
+      <div className="flex-1 flex items-center justify-start">
+        <Link
+          href="/"
+          className="group flex items-center gap-3 pointer-events-auto"
+          data-cursor="HOME"
+        >
+          <div className="w-8 h-8 bg-primary rounded-sm rotate-45 flex items-center justify-center">
+            <div className="w-4 h-4 bg-black rotate-45" />
+          </div>
+          <span className="font-label-caps text-label-caps text-on-surface tracking-widest">
+            RAJIV AGARWAL
+          </span>
+        </Link>
+      </div>
 
       {/* Chapters */}
-      <ul className="hidden lg:flex items-center gap-7 pointer-events-auto">
-        {SECTIONS.map((s) => (
-          <li key={s.id}>
-            <a
-              href={`#${s.id}`}
-              onClick={scrollTo(s.id)}
-              data-cursor="JUMP"
-              className={`group font-label-caps text-[10px] tracking-[0.3em] transition-colors relative py-2 ${
-                active === s.id ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'
-              }`}
-            >
-              {s.label}
-              <span
-                className={`absolute left-0 right-0 -bottom-0.5 h-px bg-primary origin-left transition-transform duration-300 ${
-                  active === s.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+      <div className="flex items-center justify-center">
+        <ul className="hidden lg:flex items-center gap-7 pointer-events-auto">
+          {SECTIONS.map((s) => (
+            <li key={s.id}>
+              <a
+                href={`#${s.id}`}
+                onClick={scrollTo(s.id)}
+                data-cursor="JUMP"
+                className={`group font-label-caps text-[10px] tracking-[0.3em] transition-colors relative py-2 ${
+                  active === s.id ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'
                 }`}
-              />
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      {/* Local badge */}
-      <div className="hidden md:flex items-center gap-3 pointer-events-auto font-label-caps text-[10px] tracking-[0.25em] text-on-surface-variant">
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-70 animate-ping" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-        </span>
-        <span>THANE · {time} IST</span>
+              >
+                {s.label}
+                <span
+                  className={`absolute left-0 right-0 -bottom-0.5 h-px bg-primary origin-left transition-transform duration-300 ${
+                    active === s.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      {/* Right spacer to keep chapters centered on large screens */}
+      <div className="flex-1 hidden lg:block pointer-events-none" />
     </nav>
   );
 }

@@ -9,9 +9,9 @@ import React from 'react';
 export default function TechMarquee({ items }: { items: string[] }) {
   const sep = '●';
   return (
-    <div className="relative w-full overflow-hidden py-10 border-y border-white/10">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+    <div className="relative w-full overflow-hidden py-10 border-y border-white/10 select-none">
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-36 md:w-48 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-36 md:w-48 bg-gradient-to-l from-black via-black/80 to-transparent z-10" />
       <div className="flex w-max marquee-track whitespace-nowrap">
         {[...items, ...items].map((t, i) => (
           <span
