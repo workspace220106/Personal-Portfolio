@@ -9,7 +9,7 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
 
   useEffect(() => {
     const startTime = Date.now();
-    const duration = 8000; // 8 seconds
+    const duration = 3000; // 3 seconds
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -20,7 +20,7 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
         clearInterval(interval);
         setIsRevealed(true);
       }
-    }, 30);
+    }, 20);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,9 +33,9 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
         initial={{ opacity: 1 }}
         animate={{
           opacity: isRevealed ? 0 : 1,
-          scale: isRevealed ? 1.1 : 1
+          scale: isRevealed ? 1.05 : 1
         }}
-        transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       />
 
       <AnimatePresence>
@@ -69,7 +69,7 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
           opacity: isRevealed ? 1 : 0,
           y: isRevealed ? 0 : 20
         }}
-        transition={{ duration: 1.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.0, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
       >
         {children}
       </motion.div>
@@ -77,7 +77,7 @@ export default function VoidReveal({ children, showIndicator = true }: { childre
       {/* Animated Spacer */}
       <motion.div 
         animate={{ height: isRevealed ? 0 : "100vh" }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="w-full overflow-hidden"
       />
     </div>
