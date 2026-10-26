@@ -123,7 +123,7 @@ export default function Home() {
               className="mb-10 border-l-4 border-primary pl-6"
             >
               <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">The Pitch</h2>
-              <h3 className="font-headline-md text-headline-md md:text-headline-lg">{narrativePillars.tagline}</h3>
+              <h3 className="font-headline-md text-headline-md md:text-headline-lg text-fade-dark font-bold">{narrativePillars.tagline}</h3>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {narrativePillars.threads.map((t, i) => (
@@ -170,7 +170,7 @@ export default function Home() {
         <section className="px-6 md:px-margin-desktop py-section-gap">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-gutter">
             <div className="md:w-1/3">
-              <h2 className="font-headline-md text-headline-md sticky top-32">CORE<br/>CAPABILITIES</h2>
+              <h2 className="font-headline-md text-headline-md sticky top-32 text-fade-dark font-bold">CORE<br/>CAPABILITIES</h2>
             </div>
             <div className="md:w-2/3">
               {[
@@ -230,7 +230,7 @@ function ExperienceItem({ exp, index }: { exp: { title: string; company: string;
     >
       <div className={`md:w-1/2 ${exp.align === 'right' ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
         <div className="hidden md:block">
-          <h3 className="font-headline-md text-2xl lg:text-3xl text-on-surface mb-2">{exp.title}</h3>
+          <h3 className="font-headline-md text-2xl lg:text-3xl text-fade-dark font-bold mb-2">{exp.title}</h3>
           <p className="text-primary text-base lg:text-lg font-medium tracking-tight uppercase">{exp.company}</p>
           <p className="text-on-surface-variant/60 font-label-caps mt-2 text-[11px] tracking-[0.15em]">{exp.date}</p>
           {exp.description && (
@@ -240,7 +240,7 @@ function ExperienceItem({ exp, index }: { exp: { title: string; company: string;
           )}
         </div>
         <div className="md:hidden pl-16">
-          <h3 className="font-headline-md text-2xl text-on-surface mb-2">{exp.title}</h3>
+          <h3 className="font-headline-md text-2xl text-fade-dark font-bold mb-2">{exp.title}</h3>
           <p className="text-primary text-base font-medium tracking-tight uppercase">{exp.company}</p>
           <p className="text-on-surface-variant/60 font-label-caps mt-2 text-[11px] tracking-[0.15em]">{exp.date}</p>
           {exp.description && (

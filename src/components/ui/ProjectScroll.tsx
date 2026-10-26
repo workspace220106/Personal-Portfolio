@@ -57,7 +57,7 @@ export default function ProjectScroll({ projects }: ProjectScrollProps) {
         <div className="shrink-0 pt-24 pb-6 px-6 md:px-margin-desktop">
           <div className="max-w-7xl mx-auto flex items-end justify-between gap-6">
             <div className="border-l-4 border-primary pl-6">
-              <h2 className="font-headline-md text-headline-md text-on-surface mb-1">PROJECTS</h2>
+              <h2 className="font-headline-md text-headline-md text-fade-dark font-bold mb-1">PROJECTS</h2>
               <p className="font-label-caps text-label-caps text-on-surface-variant tracking-widest">
                 SCROLL · EVERY ONE LIVE, NOT JUST SOURCE
               </p>

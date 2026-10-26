@@ -16,9 +16,9 @@ export default function TechMarquee({ items }: { items: string[] }) {
         {[...items, ...items].map((t, i) => (
           <span
             key={`${t}-${i}`}
-            className="inline-flex items-center gap-6 pr-6 font-label-caps text-[22px] md:text-[28px] tracking-[0.1em] text-on-surface-variant/80 hover:text-primary transition-colors"
+            className="inline-flex items-center gap-6 pr-8 font-headline-md font-bold text-[24px] sm:text-[28px] md:text-[34px] tracking-[0.08em] select-none"
           >
-            {t}
+            <span className="text-fade-dark">{t}</span>
             <span className="text-primary/40 text-[10px]">{sep}</span>
           </span>
         ))}

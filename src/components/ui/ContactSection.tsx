@@ -54,7 +54,7 @@ export default function ContactSection() {
           <h2 className="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest">
             Contact
           </h2>
-          <h3 className="font-headline-md text-headline-md text-on-surface mt-2">
+          <h3 className="font-headline-md text-headline-md text-fade-dark font-bold mt-2">
             Let&apos;s build something together.
           </h3>
         </motion.div>
