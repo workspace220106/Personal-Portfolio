@@ -12,7 +12,13 @@ export default function TechMarquee({ items }: { items: string[] }) {
     <div className="relative w-full overflow-hidden py-10 border-y border-white/10 select-none">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-36 md:w-48 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-36 md:w-48 bg-gradient-to-l from-black via-black/80 to-transparent z-10" />
-      <div className="flex w-max marquee-track whitespace-nowrap">
+      <div
+        className="flex w-max marquee-track whitespace-nowrap"
+        style={{
+          animation: 'marquee-scroll 48s linear infinite',
+          animationPlayState: 'running',
+        }}
+      >
         {[...items, ...items].map((t, i) => (
           <span
             key={`${t}-${i}`}

@@ -252,10 +252,10 @@ body {
 
 /* Hardware-accelerated continuous marquee moving smoothly from right to left */
 @keyframes marquee-scroll {
-  0% {
+  from {
     transform: translate3d(0, 0, 0);
   }
-  100% {
+  to {
     transform: translate3d(-50%, 0, 0);
   }
 }
@@ -264,14 +264,13 @@ body {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: marquee-scroll 80s linear infinite;
+  animation: marquee-scroll 48s linear infinite !important;
+  animation-play-state: running !important;
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
 }
 
 .marquee-track > span {
@@ -281,8 +280,3 @@ body {
   backface-visibility: hidden;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation-play-state: paused;
-  }
-}
